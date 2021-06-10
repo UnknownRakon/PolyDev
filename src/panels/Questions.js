@@ -42,7 +42,7 @@ class Questions extends Component {
                 <Div>
                     <Caption className="captionCaps" level="1" weight="semibold" caps >Категории вопросов</Caption>
                 </Div>
-                <CardGrid size="m">
+                <CardGrid size="m" style={{marginBlockEnd: 70}}>
                     <Card className='card'  onClick={this.onClick('dorms')}  data-to="questions-list">
                         <Icon36HomeOutline  className="icon"/>
                         <Caption level="1" weight="semibold" caps style={{ marginTop: 10 }}>Общежития</Caption>

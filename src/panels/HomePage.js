@@ -64,7 +64,7 @@ class HomePage extends Component {
             </Gradient>
           }
         </Div>
-        <Group className="group-about">
+        <Group className="group-about" style={{marginBlockEnd: 70}}>
           <Header mode="primary" aside={<Icon20Write onClick={this.props.go} data-to='edit'/>}>Обо мне</Header>
           <Header mode="secondary" aside={<Text>{this.state.group}</Text>}>Группа:</Header>
           <Header mode="secondary" aside={<Text>{this.state.year}</Text>}>Курс:</Header>

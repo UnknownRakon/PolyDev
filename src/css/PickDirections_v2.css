@@ -81,18 +81,22 @@
 @media screen and (min-width: 1000px) {
   .vkuiChipsSelect__options {
     height: 300%;
-    max-height: 260px;
+    max-width: calc(100% - 80px);
   }
 
   .vkuiChipsSelect__options .vkuiCustomScrollView__box {
-    max-height: 260px;
+    max-width: calc(100% - 80px);
   }
 
   .vkuiChipsSelect__option {
-    max-height: 260px;
+    max-width: calc(100% - 80px);
   }
 }
 
 .vkuiCheckbox {
   margin-left: 0 !important;
+}
+.directions__checkbox {
+  padding:0;
+  max-width: calc(100% - 80px);
 }

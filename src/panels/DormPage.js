@@ -3,19 +3,14 @@ import React, { Component } from 'react';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import List from '@vkontakte/vkui/dist/components/List/List';
-import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
-import Counter from '@vkontakte/vkui/dist/components/Counter/Counter';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import Link from '@vkontakte/vkui/dist/components/Link/Link';
 import '../css/PickDirections_v2.css';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
-import Card from '@vkontakte/vkui/dist/components/Card/Card';
-import CardScroll from '@vkontakte/vkui/dist/components/CardScroll/CardScroll';
-import { PanelHeaderBack } from '@vkontakte/vkui';
+import { Gallery, Group, PanelHeaderBack } from '@vkontakte/vkui';
 let dorms = require('../json/dorms.json');
+import '../css/dorm.css';
 
 class DormPage extends Component {
     constructor(props) {
@@ -36,22 +31,24 @@ class DormPage extends Component {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
-                <Title level="2" weight="regular" style={{ marginBottom: 8, textTransform:'uppercase', textAlign:'center', opacity:.5, fontSize:'.85rem' }}>Общежитие № {this.props.dorm +1} </Title>
-                <CardScroll size="m">
-
-              {
+                <Title level="2" weight="regular" className="dorm__title">Общежитие № {this.props.dorm +1} </Title>
+                <Group>
+                <Gallery
+                  slideWidth="custom"
+                  style={{ height: 300 }}
+                  bullets="dark"
+                  showArrows
+                >
+                  {
                 dorms.Общежития[this.props.dorm].Фотографии.map((photo,index)=>{
                   return (
-
-                    <Card  key={index} style={{background:'transparent'}}>
-                    <div style={{ paddingBottom: '66%', background:"url(" + photo + ')' ,backgroundPosition:'center', backgroundSize:'cover', width:'100%', borderRadius:'8px', height:'' }}>
-                    </div>
-                  </Card>
+                    <img src={photo} key={index}/>
                   )
                 })
               }
-            </CardScroll>
-            <Div style={{margin:'0 16px 8px 16px', lineHeight:'1.4rem'}}>
+                </Gallery>
+              </Group>
+            <Div style={{margin:'0 16px 8px 16px', lineHeight:'1.4rem', marginBlockEnd: 70}}>
                 <Text dangerouslySetInnerHTML={this.createMarkup(dorms.Общежития[this.props.dorm].Описание)} />
                </Div>
                <FixedLayout filled vertical="bottom">

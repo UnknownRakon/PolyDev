@@ -70,7 +70,7 @@ const Acquaintance = ({ id, go, fetchedUser }) => {
 							Круто! Мы рады, что тебя привлёк наш университет. Расскажи, какая форма обучения тебя интересует?
 					</Caption>
 						<FormLayout>
-							<FormItem top="Форма обуения">
+							<FormItem top="Форма обучения">
 								<Radio name="radio" value="intramural" onClick={() => setForm('intramural')} defaultChecked>Очная</Radio>
 								<Radio name="radio" value="extramural" onClick={() => setForm('extramural')}>Заочная</Radio>
 							</FormItem>

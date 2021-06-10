@@ -21,6 +21,8 @@ import CalendarPanel from './panels/Calendar';
 import Dorms from './panels/Dorms';
 import DormPage from './panels/DormPage';
 import EditStudent from './panels/EditStudent';
+import './css/gilroy.css';
+import './css/main.css';
 
 const App = () => {
 	const [activePanel, setActivePanel] = localStorage.getItem('group') == null ? useState('acquaintance') : useState('home');

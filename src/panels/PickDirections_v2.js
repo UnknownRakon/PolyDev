@@ -1,4 +1,3 @@
-  
 import React, { Component } from 'react';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -51,9 +50,9 @@ class PickDirections_v2 extends Component {
 	componentDidMount = () => {
 		if (localStorage.getItem('selectedGroups')) {
 			for (let i = 0; i < localStorage.getItem('selectedGroups').length; i++)
-			if (localStorage.getItem('selectedGroups')[i] == 't'){
-				this.setState({valid: true})
-			}
+				if (localStorage.getItem('selectedGroups')[i] == 't') {
+					this.setState({ valid: true })
+				}
 			let counter = 0;
 			for (let i = 0; i < document.querySelectorAll('input[type=checkbox]').length * 2 - 1; i++) {
 				if (localStorage.getItem('selectedGroups')[i] !== ',') {
@@ -63,14 +62,14 @@ class PickDirections_v2 extends Component {
 			}
 			let t = localStorage.getItem('selectedGroups');
 			console.log(t);
-			for (let i = 0; i< t.length; i++) {
-				if(localStorage.getItem('selectedGroups')[i] === 't') {
+			for (let i = 0; i < t.length; i++) {
+				if (localStorage.getItem('selectedGroups')[i] === 't') {
 					this.state.counter--
 					console.log(this.state.counter)
 				}
 			}
 		}
-		
+
 	}
 
 	handleInfoClick = (value) => (event) => {
@@ -111,10 +110,10 @@ class PickDirections_v2 extends Component {
 				<Div style={{ marginLeft: 'auto', }}>
 					<List>
 						{
-							this.componentDidMount?<Cell indicator={<Counter>{this.state.counter}</Counter>}>Доступно для выбора </Cell>:null
+							this.componentDidMount ? <Cell indicator={<Counter>{this.state.counter <= 0 ? 0 : this.state.counter}</Counter>}>Доступно для выбора </Cell> : null
 						}
-						
-						
+
+
 
 					</List>
 				</Div>
@@ -128,21 +127,21 @@ class PickDirections_v2 extends Component {
 							Информатика и вычислительная техника - 09.03.01
 			</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem  style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox value="newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][0]" checked={this.value} onChange={() => this.handleCheckboxChange(event)}> {newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][0]`)} data-to="about-direction" />
 						</Div>
 
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][1]">{newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][1]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][1]`)} data-to="about-direction" />
 						</Div>
 
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][2]">{newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][2]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Бакалвриат[0]['Информатика и вычислительная техника - 09.03.01'][2]`)} data-to="about-direction" />
@@ -153,14 +152,14 @@ class PickDirections_v2 extends Component {
 			</Div>
 
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Бакалвриат[1]['Прикладная информатика - 09.03.03'][0]">{newDirections.Очная.Бакалвриат[1]['Прикладная информатика - 09.03.03'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Бакалвриат[1]['Прикладная информатика - 09.03.03'][0]`)} data-to="about-direction" />
 						</Div>
 
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Бакалвриат[1]['Прикладная информатика - 09.03.03'][1]">{newDirections.Очная.Бакалвриат[1]['Прикладная информатика - 09.03.03'][1]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Бакалвриат[1]['Прикладная информатика - 09.03.03'][1]`)} data-to="about-direction" />
@@ -170,7 +169,7 @@ class PickDirections_v2 extends Component {
 							Информационная безопасность - 10.03.01
 			</Div>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Бакалвриат[2]['Информационная безопасность - 10.03.01'][0]">{newDirections.Очная.Бакалвриат[2]['Информационная безопасность - 10.03.01'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Бакалвриат[2]['Информационная безопасность - 10.03.01'][0]`)} data-to="about-direction" />
@@ -186,7 +185,7 @@ class PickDirections_v2 extends Component {
 							Компьютерная безопастноть - 10.05.01
 			</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Специалитет[0]['Компьютерная безопастноть - 10.05.01'][0]"> {newDirections.Очная.Специалитет[0]['Компьютерная безопастноть - 10.05.01'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Специалитет[0]['Компьютерная безопастноть - 10.05.01'][0]`)} data-to="about-direction" />
@@ -201,7 +200,7 @@ class PickDirections_v2 extends Component {
 							Прикладная информатика и математика - 01.04.02
 					</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Магистаратура[0]['Прикладная информатика и математика - 01.04.02'][0]">  {newDirections.Очная.Магистаратура[0]['Прикладная информатика и математика - 01.04.02'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Магистаратура[0]['Прикладная информатика и математика - 01.04.02'][0]`)} data-to="about-direction" />
@@ -212,14 +211,14 @@ class PickDirections_v2 extends Component {
 							Информатика и вычислительная техника - 09.04.01
 					</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Магистаратура[1]['Информатика и вычислительная техника - 09.04.01'][0]"> {newDirections.Очная.Магистаратура[1]['Информатика и вычислительная техника - 09.04.01'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Магистаратура[1]['Информатика и вычислительная техника - 09.04.01'][0]`)} data-to="about-direction" />
 						</Div>
 
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Магистаратура[1]['Информатика и вычислительная техника - 09.04.01'][1]"> {newDirections.Очная.Магистаратура[1]['Информатика и вычислительная техника - 09.04.01'][1]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Магистаратура[1]['Информатика и вычислительная техника - 09.04.01'][1]`)} data-to="about-direction" />
@@ -229,7 +228,7 @@ class PickDirections_v2 extends Component {
 							Информационная безопасность - 10.04.01
 					</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Магистаратура[2]['Информационная безопасность - 10.04.01'][0]"> {newDirections.Очная.Магистаратура[2]['Информационная безопасность - 10.04.01'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Магистаратура[2]['Информационная безопасность - 10.04.01'][0]`)} data-to="about-direction" />
@@ -239,7 +238,7 @@ class PickDirections_v2 extends Component {
 							Управление в технических системах - 27.04.04
 					</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Очная.Магистаратура[3]['Управление в технических системах - 27.04.04'][0]"> {newDirections.Очная.Магистаратура[3]['Управление в технических системах - 27.04.04'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Очная.Магистаратура[3]['Управление в технических системах - 27.04.04'][0]`)} data-to="about-direction" />
@@ -256,7 +255,7 @@ class PickDirections_v2 extends Component {
 							Информатика и вычислительная техника - 09.03.01
 				</Title>
 						<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
-							<FormItem style={{padding:0, maxWidth: 250}}>
+							<FormItem className="directions__checkbox">
 								<Checkbox onChange={() => this.handleCheckboxChange(event)} value="newDirections.Заочная.Бакалавриат[0]['Информатика и вычислительная техника - 09.03.01'][0]"> {newDirections.Заочная.Бакалавриат[0]['Информатика и вычислительная техника - 09.03.01'][0]['Название направления']}</Checkbox>
 							</FormItem>
 							<Icon20Info onClick={this.handleInfoClick(`newDirections.Заочная.Бакалавриат[0]['Информатика и вычислительная техника - 09.03.01'][0]`)} data-to="about-direction" />

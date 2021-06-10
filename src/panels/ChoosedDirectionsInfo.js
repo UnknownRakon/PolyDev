@@ -4,16 +4,13 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import { PanelHeaderBack } from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import List from '@vkontakte/vkui/dist/components/List/List';
-import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
-import Counter from '@vkontakte/vkui/dist/components/Counter/Counter';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import '../css/PickDirections_v2.css';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
+let newDirections = require('../json/new_directions.json');
 
-const newDirections = require('../json/new_directions.json');
 
 class ChoosedDirectionsInfo extends Component {
     constructor(props) {
@@ -33,17 +30,8 @@ class ChoosedDirectionsInfo extends Component {
         for (let i = 0; i < localStorage.getItem('choosedGroups').split(',').length; i++) {
             this.state.messageDirectionsArray.push(eval(localStorage.getItem('choosedGroups').split(',')[i])['Название направления'])
         }
-        // console.log(this.state.messageDirectionsArray);
     }
-    /* 
-        firstMessage = () => {
-        for (let i = 0; i<localStorage.getItem('choosedGroups').split(',').length; i++){
-          this.state.messageDirections += `${i+1}. ` + eval(localStorage.getItem('choosedGroups').split(',')[i])['Название направления'] + '\n'
-          
-        }
-        console.log(this.state.messageDirectionsArray)
-        return (this.state.messageDirections);
-        } */
+
     render() {
         return (
             <Panel id={this.props.id}>
