@@ -5,15 +5,14 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import List from '@vkontakte/vkui/dist/components/List/List';
 import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
-import Counter from '@vkontakte/vkui/dist/components/Counter/Counter';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Link from '@vkontakte/vkui/dist/components/Link/Link';
 import '../css/PickDirections_v2.css';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
 import { PanelHeaderBack } from '@vkontakte/vkui';
-let newDirections = require('../json/new_directions.json');
+
+import '../css/aboutDirection.css';
 
 class AboutDirection extends Component {
     constructor(props) {
@@ -23,8 +22,8 @@ class AboutDirection extends Component {
         }
     }
     componentDidMount = () => {
-        const interestedDirection = eval(localStorage.getItem('interestedDirection'));
-        this.setState({ interestedDirection });
+        this.setState({ interestedDirection: JSON.parse(localStorage.getItem('interestedDirection')) })
+        
     }
     createMarkup = (text) => {
         return { __html: text };

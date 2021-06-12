@@ -54,15 +54,15 @@ class Dorms extends Component {
               {
                 dormsInfo.Общежития.map((dorm,index)=>{
                   return (
-                    <Card  key={index} style={{background:'transparent'}} onClick={this.handeDormClick(index)} data-to='dorm-page'>
-                    <div style={{ paddingBottom: '66%', background:"url(" + dorm.Фотографии[0]+ (')') ,backgroundPosition:'center', backgroundSize:'cover', width:'100%', borderRadius:'8px', height:'' }}>
+                    <Card  key={index} className="dorms__card" onClick={this.handeDormClick(index)} data-to='dorm-page'>
+                    <div className="dorms__card__photo" style={{background:"url(" + dorm.Фотографии[0]+ (')')}}>
                     </div>
-                    <div style={{display: 'flex', justifyContent: '', width: '100%', flexDirection:'column', marginTop:10}}>
-                      <Text style={{textAlign:'left', width: '100%'}}>Общежитие {dorm.Номер}</Text>
-                      <Text style={{textAlign:'left', opacity:.5, fontSize: '.85rem'}}> {dorm['Адрес']} </Text> 
-                      <div style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
-                      <Icon16New fill={dorm.Цвет} style={{padding:0}}/>
-                      <Text style={{textAlign:'left', opacity:.5, paddingTop: '0!important'}} >{dorm['Метро']}</Text>
+                    <div className="dorms__card__content">
+                      <Text className="dorms__card__content__number">Общежитие {dorm.Номер}</Text>
+                      <Text className="dorms__card__content__address"> {dorm['Адрес']} </Text> 
+                      <div className="dorms__card__content__metro">
+                      <Icon16New className="dorms__card__content__metro__color" fill={dorm.Цвет}/>
+                      <Text className="dorms__card__content__metro__text" style={{textAlign:'left', opacity:.5, paddingTop: '0!important'}} >{dorm['Метро']}</Text>
                       </div>
                     </div>
                   </Card>

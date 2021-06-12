@@ -19,68 +19,72 @@ class ChoosedDirectionsInfo extends Component {
             messageDirections: `\n`,
             messageDirectionsArray: [],
             requiredPoint: {
-                'математика': '39',
-                'русский язык': '40',
+                'Математика': '39',
+                'Русский язык': '40',
                 "Информатика и ИКТ/Физика": "44/39"
             }
         }
     }
 
     componentDidMount = () => {
-        for (let i = 0; i < localStorage.getItem('choosedGroups').split(',').length; i++) {
-            this.state.messageDirectionsArray.push(eval(localStorage.getItem('choosedGroups').split(',')[i])['Название направления'])
-        }
+        this.state.messageDirectionsArray = localStorage.getItem('choosedGroups').split(',');
     }
 
     render() {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
-                <Title style={{ marginLeft: 16, marginRight: 16, marginTop: 16, padding: 16, background: 'var(--content_tint_background)', borderRadius: 7, fontSize: '1.2rem' }}>
+                <Title className="choosedDirectionInfo_title">
                     Отлично! Ты выбрал:
-
-    {
-                        this.componentDidMount()}{
-                        this.state.messageDirectionsArray.map((unit, index) => {
-                            return (
-                                <Text style={{ fontSize: '1.2rem' }} key={index}>{index + 1}. {unit}</Text>
-                            )
-                        }
-                        )}
+                            {this.componentDidMount()}
+                            <ul>
+                                {this.state.messageDirectionsArray.map((unit, index) => {
+                                    return (
+                                        <li style={{ fontSize: '1.2rem' }} key={index}>{unit}</li>
+                                    )
+                                }
+                                )}
+                            </ul> 
                 </Title>
 
-                <Title style={{ marginLeft: 16, marginRight: 16, marginTop: 16, padding: 16, background: 'var(--content_tint_background)', borderRadius: 7, fontSize: '1.2rem' }}>
+                <Title className="choosedDirectionInfo_title">
                     Чтобы участвовать в конкурсе на поступление тебе нужно сдать:
-    {localStorage.getItem('wantStudyLevel') == 'magistracy' ?
-                        <Text style={{ fontSize: '1.2rem' }}>- Междисциплинарный экзамен — 40</Text>
+                    <ul>    {localStorage.getItem('wantStudyLevel') == 'magistracy' ?
+                        <Text>- Междисциплинарный экзамен — 40</Text>
                         : Object.keys(this.state.requiredPoint).map((key, index) => {
                             return (
-                                <Text style={{ fontSize: '1.2rem' }} key={index}>{index + 1}.{key} {this.state.requiredPoint[key]}</Text>
+                                <li  key={index}> {key} {this.state.requiredPoint[key]}</li>
                             )
                         }
                         )}
+                    </ul>    
                 </Title>
-                <Title style={{ marginLeft: 16, marginRight: 16, marginTop: 16, padding: 16, background: 'var(--content_tint_background)', borderRadius: 7, fontSize: '1.2rem' }}>
+                <Title className="choosedDirectionInfo_title">
                     Как подать документы?
-          <Text style={{ fontSize: '1.2rem' }}>- Через личный кабинет абитуриента Московского Политеха</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Через портал Госуслуг</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Лично в университете</Text>
-                </Title>
-                <Title style={{ marginLeft: 16, marginRight: 16, marginTop: 16, padding: 16, background: 'var(--content_tint_background)', borderRadius: 7, fontSize: '1.2rem' }}>
-                    Подготовить документы:
-          <Text style={{ fontSize: '1.2rem' }}>- Копися паспорта</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Аттестат или диплом СПО</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Копия СНИЛС</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Заявление на поступление</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Документы подтврждающие льготы (при наличии)</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- 2 матовые фотографии 3X4 (для поступающих по ВИ)</Text>
-                    <Text style={{ fontSize: '1.2rem' }}>- Документы подтвержающиеучастие в олимпиадах (приналичии)</Text>
-                </Title>
-                <Title style={{ marginLeft: 16, marginRight: 16, marginBottom: 70, marginTop: 16, padding: 16, background: 'var(--content_tint_background)', borderRadius: 7, fontSize: '1.2rem' }}>
-                    Приём документов начинается 20 июня. Ждём тебя!
-      </Title>
+                    <ul>
+                        <li>Через личный кабинет абитуриента Московского Политеха</li>
+                        <li>Через портал Госуслуг</li>
+                        <li>Лично в университете</li>
+                    </ul>
 
-                <FixedLayout filled vertical="bottom">
+                </Title>
+                <Title className="choosedDirectionInfo_title">
+                    Подготовить документы:
+                    <ul>
+                        <li>Копися паспорта</li>
+                        <li>Аттестат или диплом СПО</li>
+                        <li>Копия СНИЛС</li>
+                        <li>Заявление на поступление</li>
+                        <li>Документы подтврждающие льготы (при наличии)</li>
+                        <li>2 матовые фотографии 3X4 (для поступающих по ВИ)</li>
+                        <li>Документы подтвержающиеучастие в олимпиадах (приналичии)</li>
+                    </ul>
+                </Title>
+                <Title className="choosedDirectionInfo_title">
+                    Приём документов начинается 20 июня. Ждём тебя!
+                </Title>
+
+                <FixedLayout className="choosedDirectionInfo__fixed" filled vertical="bottom">
                     <Div>
                         <Button stretched size="l" mode="primary" onClick={this.props.go} data-to="dorms">Общежития</Button>
                     </Div>

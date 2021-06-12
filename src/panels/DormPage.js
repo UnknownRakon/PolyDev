@@ -21,17 +21,17 @@ class DormPage extends Component {
     createMarkup = (text) => {
       return {__html: text};
     }
-    goNextPageHandler = () => {
-      this.props.setdorm(this.props.dorm +1 )
+    goNextPageHandler = () => { 
+      this.props.dorm ===  dorms['Общежития'].length -1 ? this.props.setdorm(0) :this.props.setdorm(this.props.dorm +1 );
     }
     goBackPageHandler = () =>{
-      this.props.setdorm(this.props.dorm -1 )
+      this.props.dorm === 0 ?this.props.setdorm(dorms['Общежития'].length -1 ) : this.props.setdorm(this.props.dorm -1 );
     }
     render() {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
-                <Title level="2" weight="regular" className="dorm__title">Общежитие № {this.props.dorm +1} </Title>
+                <Title level="2" weight="regular" className="dorm__title">Общежитие №{dorms.Общежития[`${this.props.dorm}`].Номер} </Title>
                 <Group>
                 <Gallery
                   slideWidth="custom"
@@ -53,8 +53,8 @@ class DormPage extends Component {
                </Div>
                <FixedLayout filled vertical="bottom">
                 <Div style={{display: "flex", justifyContent: "space-between"}}>
-                  <Button  style={{width: "40%"}} size="l"  disabled={this.props.dorm == 0} onClick={this.goBackPageHandler} data-to="choosed-directions-info">Назад</Button>
-                  <Button  style={{width: "40%"}} size="l"  disabled={this.props.dorm == dorms.Общежития.length -1} onClick={this.goNextPageHandler} data-to="choosed-directions-info">Продолжить</Button>
+                  <Button  style={{width: "40%"}} size="l"  onClick={this.goBackPageHandler} data-to="choosed-directions-info">Предыдущее</Button>
+                  <Button  style={{width: "40%"}} size="l"  onClick={this.goNextPageHandler} data-to="choosed-directions-info">Следующее</Button>
                 </Div>
               </FixedLayout>
             </Panel>

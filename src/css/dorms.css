@@ -11,10 +11,13 @@
     line-height: 1.4rem;
   }
   .dorms__priority {
+    padding-left:32px!important;
     list-style-type:number;
+    line-height:146%;
   }
   .dorms__card {
     background:transparent!important;
+    margin-bottom: 20px;
   }
   .dorms__card__photo {
     padding-bottom: 66%;
