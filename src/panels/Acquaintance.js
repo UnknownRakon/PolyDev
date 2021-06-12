@@ -15,7 +15,7 @@ import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Subhead from '@vkontakte/vkui/dist/components/Typography/Subhead/Subhead';
 import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
-import { Icon24Help } from '@vkontakte/icons';
+import { Icon20QuestionOutline } from '@vkontakte/icons';
 
 import '../css/Radio.css';
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
@@ -72,7 +72,7 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 							Круто! Мы рады, что тебя привлёк наш университет. Расскажи, какая форма обучения тебя интересует?
 					</Caption>
 						<FormLayout>
-							<Header mode="primary" aside={<Icon24Help onClick={() => setActiveModal(MODAL_CARD_ONE)} />} style={{ marginBottom: 10 }}>Форма обучения</Header>
+							<Header mode="primary" aside={<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_ONE)} />} style={{ marginBottom: 10 }}>Форма обучения</Header>
 							<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0 }}>
 								<FormItem className="radio"><Radio name="radio" value="Очная" onClick={() => setForm('Очная')} defaultChecked>Очная</Radio></FormItem>
 							</Div>
@@ -82,7 +82,7 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 						</FormLayout>
 						{wantStudyForm == 'Очная' ?
 							<FormLayout>
-								<Header mode="primary" style={{ marginBottom: 10 }} aside={	<Icon24Help onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
+								<Header mode="primary" style={{ marginBottom: 10 }} aside={	<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
 								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
 									<FormItem className="radio"><Radio name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio></FormItem>
 								</Div>
@@ -95,7 +95,7 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 							</FormLayout>
 							:
 							<FormLayout>
-								<Header mode="primary" style={{ marginBottom: 10 }} aside={<Icon24Help onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
+								<Header mode="primary" style={{ marginBottom: 10 }} aside={<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
 								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
 									<FormItem className="radio"><Radio name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio></FormItem>
 								</Div>
