@@ -15,13 +15,14 @@ import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Subhead from '@vkontakte/vkui/dist/components/Typography/Subhead/Subhead';
 import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
+import { Icon12Question } from '@vkontakte/icons';
 
 import '../css/Radio.css';
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
-const Acquaintance = ({ id, go, fetchedUser }) => {
+const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MODAL_CARD_TWO, MODAL_CARD_THREE, MODAL_CARD_FOUR, MODAL_CARD_FIVE}) => {
 
 	const [want, setWant] = useState(false)
 	const [wantStudyForm, setForm] = useState('intramural')
@@ -71,16 +72,31 @@ const Acquaintance = ({ id, go, fetchedUser }) => {
 					</Caption>
 						<FormLayout>
 							<FormItem top="Форма обучения">
-								<Radio name="radio" value="intramural" onClick={() => setForm('intramural')} defaultChecked>Очная</Radio>
-								<Radio name="radio" value="extramural" onClick={() => setForm('extramural')}>Заочная</Radio>
+								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
+									<Radio style={{ maxWidth: 300 }} name="radio" value="intramural" onClick={() => setForm('intramural')} defaultChecked>Очная</Radio>
+									<Icon12Question onClick={()=>setActiveModal(MODAL_CARD_ONE)}/>
+								</Div>
+								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
+									<Radio style={{ maxWidth: 300 }} name="radio" value="extramural" onClick={() => setForm('extramural')}>Заочная</Radio>
+									<Icon12Question onClick={()=>setActiveModal(MODAL_CARD_TWO)}/>
+								</Div>
 							</FormItem>
 						</FormLayout>
 						<FormLayout>
 							{wantStudyForm == 'intramural' ?
 								<FormItem top="Ступень образования">
-									<Radio name="radio" value="bachelor" onClick={() => setLevel('bachelor')} defaultChecked>Бакалавриат</Radio>
-									<Radio name="radio" value="specialty" onClick={() => setLevel('specialty')} >Специалитет</Radio>
-									<Radio name="radio" value="magistracy" onClick={() => setLevel('magistracy')} >Магистратура</Radio>
+									<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
+										<Radio style={{ maxWidth: 300 }} name="radio" value="bachelor" onClick={() => setLevel('bachelor')} defaultChecked>Бакалавриат</Radio>
+										<Icon12Question onClick={()=>setActiveModal(MODAL_CARD_THREE)}/>
+									</Div>
+									<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
+										<Radio style={{ maxWidth: 300 }} name="radio" value="specialty" onClick={() => setLevel('specialty')} >Специалитет</Radio>
+										<Icon12Question onClick={()=>setActiveModal(MODAL_CARD_FOUR)}/>
+									</Div>
+									<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
+										<Radio style={{ maxWidth: 300 }} name="radio" value="magistracy" onClick={() => setLevel('magistracy')} >Магистратура</Radio>
+										<Icon12Question onClick={()=>setActiveModal(MODAL_CARD_FIVE)}/>
+									</Div>
 								</FormItem>
 								:
 								<FormItem className="myDiv" top="Ступень образования">
@@ -94,7 +110,7 @@ const Acquaintance = ({ id, go, fetchedUser }) => {
 				}
 				<FixedLayout filled vertical="bottom">
 					<Div>
-						<Button stretched size="l" mode="primary" onClick={(event)=>handleNextClick(event)} data-to={want ? 'pick-directions' : 'student-form-filling'} >
+						<Button stretched size="l" mode="primary" onClick={(event) => handleNextClick(event)} data-to={want ? 'pick-directions' : 'student-form-filling'} >
 							Далее
 							</Button>
 					</Div>
