@@ -27,10 +27,6 @@ import { Icon56QuestionOutline } from '@vkontakte/icons';
 
 const MODAL_CARD_ONE = 'modal-one';
 const MODAL_CARD_TWO = 'modal-two';
-const MODAL_CARD_THREE = 'modal-three';
-const MODAL_CARD_FOUR = 'modal-four';
-const MODAL_CARD_FIVE = 'modal-five';
-
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState(localStorage.getItem('validation') ? 'home' : 'acquaintance');
@@ -89,7 +85,7 @@ const App = () => {
 				id={MODAL_CARD_ONE}
 				onClose={() => setActiveModal(null)}
 				icon={<Icon56QuestionOutline />}
-				header="Что такое очная форма обучения?"
+				header="Что такое форма обучения?"
 				subheader="ПУПУПУ"
 			>
 			</ModalCard>
@@ -97,31 +93,7 @@ const App = () => {
 				id={MODAL_CARD_TWO}
 				onClose={() => setActiveModal(null)}
 				icon={<Icon56QuestionOutline />}
-				header="Что такое заочная форма обучения?"
-				subheader="ПУПУПУ"
-			>
-			</ModalCard>
-			<ModalCard
-				id={MODAL_CARD_THREE}
-				onClose={() => setActiveModal(null)}
-				icon={<Icon56QuestionOutline />}
-				header="Что такое бакалавриат?"
-				subheader="ПУПУПУ"
-			>
-			</ModalCard>
-			<ModalCard
-				id={MODAL_CARD_FOUR}
-				onClose={() => setActiveModal(null)}
-				icon={<Icon56QuestionOutline />}
-				header="Что такое специалитет?"
-				subheader="ПУПУПУ"
-			>
-			</ModalCard>
-			<ModalCard
-				id={MODAL_CARD_FIVE}
-				onClose={() => setActiveModal(null)}
-				icon={<Icon56QuestionOutline />}
-				header="Что такое магистратура?"
+				header="Что такое ступень образования?"
 				subheader="ПУПУПУ"
 			>
 			</ModalCard>
@@ -133,8 +105,7 @@ const App = () => {
 				<View activePanel={activePanel} popout={popout} modal={modal}>
 					{/* <Start id='start' go={go} /> */}
 					<Acquaintance setActiveModal={setActiveModal} fetchedUser={fetchedUser}
-					MODAL_CARD_ONE={MODAL_CARD_ONE} MODAL_CARD_TWO={MODAL_CARD_TWO} MODAL_CARD_THREE={MODAL_CARD_THREE}
-					MODAL_CARD_FOUR={MODAL_CARD_FOUR} MODAL_CARD_FIVE={MODAL_CARD_FIVE}
+					MODAL_CARD_ONE={MODAL_CARD_ONE} MODAL_CARD_TWO={MODAL_CARD_TWO}
 					id='acquaintance' go={go} />
 					{/* <StudyForm id='study-form' go={go} />
 					<Degree id='degree' go={go}/> */}
