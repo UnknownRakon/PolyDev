@@ -25,7 +25,7 @@ import './css/gilroy.css';
 import './css/main.css';
 
 const App = () => {
-	const [activePanel, setActivePanel] = localStorage.getItem('group') == null ? useState('acquaintance') : useState('home');
+	const [activePanel, setActivePanel] = useState(localStorage.getItem('validation') ? 'home' : 'acquaintance');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [category, setCategory] = useState('');
@@ -90,7 +90,7 @@ const App = () => {
 					{/* Ветка два */}
 					<AboutStudent back={back} id="student-form-filling" go={go} />
 					<EditStudent back={back} go={go} id="edit" setActivePanel={setActivePanel} />
-					<HomePage id='home' fetchedUser={fetchedUser} go={go} />
+					<HomePage id='home' setActivePanel={setActivePanel} fetchedUser={fetchedUser} go={go} />
 					<Questions updateData={updateData} id='questions' go={go} />
 					<QuestionsList back={back} updateQuestion={updateQuestion} category={category} id='questions-list' go={go} />
 					<Instruction back={back} question={question} category={category} id='instruction' go={go} />

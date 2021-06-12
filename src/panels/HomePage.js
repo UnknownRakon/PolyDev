@@ -35,6 +35,7 @@ class HomePage extends Component {
     }
   }
   componentDidMount = () => {
+    localStorage.setItem('validation', 'set')
     localStorage.removeItem('category');
     const group = localStorage.getItem('group');
     const stud = localStorage.getItem('stud');
@@ -46,7 +47,8 @@ class HomePage extends Component {
     this.setState({ stud, group, year, dorm, prof, specialty, dormnum });
   }
   clearAll = () =>{
-    localStorage.clear();
+    window.localStorage.clear()
+    this.props.setActivePanel('acquaintance')
   }
   render() {
     return (
@@ -57,7 +59,7 @@ class HomePage extends Component {
             <Gradient className="avatar">
               <Avatar src={this.props.fetchedUser.photo_200} size={96} />
               <Header className='delete' mode="primary" aside={
-                <Icon16Clear onClick={this.clearAll, this.props.go} data-to='acquaintance'/>
+                <Icon16Clear onClick={this.clearAll} data-to='acquaintance'/>
               } >{`${this.props.fetchedUser.first_name} ${this.props.fetchedUser.last_name}`}</Header>
               <Text style={{ color: 'var(--text_secondary)' }}>{this.props.fetchedUser.city && this.props.fetchedUser.city.title ? this.props.fetchedUser.city.title : ''}</Text>
               <Text style={{textAlign:'center', marginTop: 10}}>{this.state.specialty}</Text>
