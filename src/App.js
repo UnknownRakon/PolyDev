@@ -38,11 +38,9 @@ const App = () => {
 	const [activeModal, setActiveModal] = useState(null);
 
 	function menu(e) {
-		console.log('menu: ' + e.state.panel);
 		if (e.state) {
 			setActivePanel(e.state.panel);
 		} else {
-			console.log('state is empty');
 			setActivePanel(routes.home);
 		}
 	}
