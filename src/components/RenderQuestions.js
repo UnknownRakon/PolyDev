@@ -6,8 +6,7 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Caption from '@vkontakte/vkui/dist/components/Typography/Caption/Caption';
-import { Icon24ArticleOutline } from '@vkontakte/icons';
-import SimpleCell from '@vkontakte/vkui/dist/components/SimpleCell/SimpleCell';
+import { Icon20HelpOutline } from '@vkontakte/icons';import SimpleCell from '@vkontakte/vkui/dist/components/SimpleCell/SimpleCell';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
 
 import jsonData from '../json/Questions.json';
@@ -33,7 +32,9 @@ class renderQusstions extends Component {
         {this.props.category == 'dorms' && this.state.data.length !== 0 &&
           this.state.data.dorms.map((unit, index) => {
             return (
-              <SimpleCell onClick={this.onClick(unit)} data-to="instruction" before={<Icon24ArticleOutline />} key={index}>{unit.question}</SimpleCell>
+              <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBlockEnd: 3 }}>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+								</Div>
             )
           }
           )
@@ -41,24 +42,30 @@ class renderQusstions extends Component {
         {this.props.category == 'study' && this.state.data.length !== 0 &&
           this.state.data.study.map((unit, index) => {
             return (
-              <SimpleCell onClick={this.onClick(unit)} data-to="instruction" before={<Icon24ArticleOutline />} key={index}>{unit.question}</SimpleCell>
-            )
+              <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBlockEnd: 3 }}>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+								</Div>           
+              )
           }
           )
         }
         {this.props.category == 'buildings' && this.state.data.length !== 0 &&
           this.state.data.buildings.map((unit, index) => {
             return (
-              <SimpleCell onClick={this.onClick(unit)} data-to="instruction" before={<Icon24ArticleOutline />} key={index}>{unit.question}</SimpleCell>
-            )
+              <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBlockEnd: 3 }}>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+								</Div>
+                )
           }
           )
         }
         {this.props.category == 'PD' && this.state.data.length !== 0 &&
           this.state.data.pd.map((unit, index) => {
             return (
-              <SimpleCell onClick={this.onClick(unit)} data-to="instruction" before={<Icon24ArticleOutline />} key={index}>{unit.question}</SimpleCell>
-            )
+              <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBlockEnd: 3 }}>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+								</Div>
+              )
           }
           )
         }
