@@ -72,40 +72,41 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 							Круто! Мы рады, что тебя привлёк наш университет. Расскажи, какая форма обучения тебя интересует?
 					</Caption>
 						<FormLayout>
-							<Title style={{marginBottom: 10}}>Форма обучения</Title>
+							<Title style={{ marginBottom: 10 }}>Форма обучения</Title>
 							<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0 }}>
 								<FormItem className="radio"><Radio name="radio" value="Очная" onClick={() => setForm('Очная')} defaultChecked>Очная</Radio></FormItem>
 								<Icon12Question onClick={() => setActiveModal(MODAL_CARD_ONE)} />
 							</Div>
-							<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBottom: 10}}>
+							<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBottom: 10 }}>
 								<FormItem className="radio"><Radio name="radio" value="Заочная" onClick={() => setForm('Заочная')}>Заочная</Radio></FormItem>
 								<Icon12Question onClick={() => setActiveModal(MODAL_CARD_TWO)} />
 							</Div>
 						</FormLayout>
-							{wantStudyForm == 'Очная' ?
+						{wantStudyForm == 'Очная' ?
 							<FormLayout>
-								<Title style={{marginBottom: 10}}>Ступень образования</Title>
-									<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3}}>
-									<FormItem className="radio"><Radio style={{ maxWidth: 200 }} name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio></FormItem>
-										<Icon12Question onClick={() => setActiveModal(MODAL_CARD_THREE)} />
-									</Div>
-									<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
-									<FormItem className="radio"><Radio style={{ maxWidth: 200 }} name="radio" value="Специалитет" onClick={() => setLevel('Специалитет')} >Специалитет</Radio></FormItem>	
-										<Icon12Question onClick={() => setActiveModal(MODAL_CARD_FOUR)} />
-									</Div>
-									<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3}}>
-									<FormItem className="radio"><Radio className='' name="radio" value="Магистаратура" onClick={() => setLevel('Магистаратура')} >Магистратура</Radio></FormItem>
-										<Icon12Question onClick={() => setActiveModal(MODAL_CARD_FIVE)} />
-									</Div>
-								</FormLayout>
-								:
-								<FormLayout>
+								<Title style={{ marginBottom: 10 }}>Ступень образования</Title>
 								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
 									<FormItem className="radio"><Radio style={{ maxWidth: 200 }} name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio></FormItem>
-										<Icon12Question onClick={() => setActiveModal(MODAL_CARD_THREE)} />
-									</Div>
-								</FormLayout>
-							}
+									<Icon12Question onClick={() => setActiveModal(MODAL_CARD_THREE)} />
+								</Div>
+								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
+									<FormItem className="radio"><Radio style={{ maxWidth: 200 }} name="radio" value="Специалитет" onClick={() => setLevel('Специалитет')} >Специалитет</Radio></FormItem>
+									<Icon12Question onClick={() => setActiveModal(MODAL_CARD_FOUR)} />
+								</Div>
+								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
+									<FormItem className="radio"><Radio className='' name="radio" value="Магистаратура" onClick={() => setLevel('Магистаратура')} >Магистратура</Radio></FormItem>
+									<Icon12Question onClick={() => setActiveModal(MODAL_CARD_FIVE)} />
+								</Div>
+							</FormLayout>
+							:
+							<FormLayout>
+								<Title style={{ marginBottom: 10 }}>Ступень образования</Title>
+								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
+									<FormItem className="radio"><Radio style={{ maxWidth: 200 }} name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio></FormItem>
+									<Icon12Question onClick={() => setActiveModal(MODAL_CARD_THREE)} />
+								</Div>
+							</FormLayout>
+						}
 					</Div>
 					: null
 				}
