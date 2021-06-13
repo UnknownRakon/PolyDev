@@ -139,3 +139,11 @@
 .pickDirections__fixed {
   position: sticky;
 }
+.link-dir{
+  color: #32a854;
+  text-decoration: none;
+}
+.link-dir:visited{
+  color:#32a854;
+  text-decoration: none;
+}

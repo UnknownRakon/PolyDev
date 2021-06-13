@@ -88,7 +88,7 @@ class PickDirections_v2 extends Component {
 			<Panel id={this.props.id}>
 				<PanelHeader left={<PanelHeaderBack onClick={this.props.go} data-to='acquaintance' />}>PolyApp</PanelHeader>
 				<Title className="pickDirections__title">
-					Для {localStorage.getItem('wantStudyForm') == 'Очная' ? 'очной формы обучения' : 'заочной формы обучени'} {localStorage.getItem('wantStudyLevel') == 'Бакалавриат' ? 'бакалавриата' : localStorage.getItem('wantStudyLevel') == 'Специалитет' ? 'специалитета' : 'магистратуры'} у нас есть такие направления. <br/><br/><i>Чтобы узнать подробнее про каждое, нажми на значок информации.</i>
+					Для {localStorage.getItem('wantStudyForm') == 'Очная' ? 'очной формы обучения' : 'заочной формы обучени'} {localStorage.getItem('wantStudyLevel') == 'Бакалавриат' ? 'бакалавриата' : localStorage.getItem('wantStudyLevel') == 'Специалитет' ? 'специалитета' : 'магистратуры'} у нас есть такие направления: <br/><i style={{fontSize: 12}}>Чтобы узнать подробнее про каждое, нажми на значок информации.</i>
 				</Title>
 				<Div style={{ marginLeft: 'auto', }}>
 					<List>

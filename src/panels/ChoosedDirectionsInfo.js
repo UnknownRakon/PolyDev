@@ -48,7 +48,7 @@ class ChoosedDirectionsInfo extends Component {
                 </Title>
 
                 <Title className="choosedDirectionInfo_title">
-                    Чтобы участвовать в конкурсе на поступление тебе нужно сдать:
+                Чтобы участвовать в конкурсе на поступление тебе нужно набрать минимум по профильным предметам и пройти конкурс:
                     <ul>    {localStorage.getItem('wantStudyLevel') == 'magistracy' ?
                         <Text>- Междисциплинарный экзамен — 40</Text>
                         : Object.keys(this.state.requiredPoint).map((key, index) => {
@@ -62,8 +62,8 @@ class ChoosedDirectionsInfo extends Component {
                 <Title className="choosedDirectionInfo_title">
                     Как подать документы?
                     <ul>
-                        <li>Через личный кабинет абитуриента Московского Политеха</li>
-                        <li>Через портал Госуслуг</li>
+                        <li>Через <a className='link-dir' href='https://lk.mospolytech.ru/user/sign-in/login' target='blank'>личный кабинет абитуриента Московского Политеха</a></li>
+                        <li>Через <a className='link-dir' href='https://www.gosuslugi.ru/10077/1' target='blank'>портал Госуслуг</a></li>
                         <li>Лично в университете</li>
                     </ul>
 
@@ -77,7 +77,7 @@ class ChoosedDirectionsInfo extends Component {
                         <li>Заявление на поступление</li>
                         <li>Документы подтврждающие льготы (при наличии)</li>
                         <li>2 матовые фотографии 3X4 (для поступающих по ВИ)</li>
-                        <li>Документы подтвержающиеучастие в олимпиадах (приналичии)</li>
+                        <li>Документы подтвержающиеучастие в олимпиадах (при наличии)</li>
                     </ul>
                 </Title>
                 <Title className="choosedDirectionInfo_title">
