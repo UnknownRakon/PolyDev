@@ -25,6 +25,7 @@ import './css/gilroy.css';
 import './css/main.css';
 import { Icon56QuestionOutline } from '@vkontakte/icons';
 import { Icon56GhostOutline } from '@vkontakte/icons';
+import arbuz from './img/arbuz.png'
 
 const MODAL_CARD_ONE = 'modal-one';
 const MODAL_CARD_TWO = 'modal-two';
@@ -113,7 +114,7 @@ const App = () => {
 			<ModalCard
 				id={MODAL_CARD_THREE}
 				onClose={() => setActiveModal(null)}
-				icon={<Icon56GhostOutline />}
+				icon={<img style={{width: 150}} src='https://psv4.userapi.com/c505536/u380412592/docs/d35/4da54b094c76/watermalon.png?extra=wEOU66WZZR2Q8xmSiarLrd40NwghFmjGPAanb4P4DOx2yXG3zVLbE39moGWzG2ZPJtAP4g4XR5LeLqY9zuB9t6qIKMI8MM6fDpfTcK2JOcO7tFBN6P7q0zA-ynGWe55UCUsOwDrvLb4zHBZ9weD4psOWPoM'/>}
 				header="Просим прощения"
 			>
 							          <Div>
