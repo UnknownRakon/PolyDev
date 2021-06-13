@@ -34,7 +34,7 @@ class Dorms extends Component {
       <Panel id={this.props.id}>
         <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
         <Group>
-          <Title level="2" weight="regular" className="dorms__title">Общежития</Title>
+          <Title level="1" weight="regular" className="dorms__title">Общежития</Title>
           <Text className="dorms__text">
             В Московском Политехе студентам предоставляется место в общежитии, если они проживают за пределами трассы А107 
           </Text>

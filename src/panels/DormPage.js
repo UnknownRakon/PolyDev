@@ -31,7 +31,7 @@ class DormPage extends Component {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
-                <Title level="2" weight="regular" className="dorm__title">Общежитие №{dorms.Общежития[`${this.props.dorm}`].Номер} </Title>
+                <Title level="1" weight="regular" className="dorm__title">Общежитие {dorms.Общежития[`${this.props.dorm}`].Номер} </Title>
                 <Group>
                 <Gallery
                   slideWidth="custom"

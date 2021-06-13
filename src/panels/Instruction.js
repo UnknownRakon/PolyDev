@@ -20,7 +20,7 @@ import { Icon56SchoolOutline } from '@vkontakte/icons';
 import { Icon28LightbulbStarOutline } from '@vkontakte/icons';
 import { Link } from '@vkontakte/vkui';
 
-import '../css/Instruction.css'
+import '../css/question.css'
 
 class Instruction extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class Instruction extends Component {
                 </Div>
                 <Group className="group-about" style={{marginBottom:130}}>
                     <Div style={{paddingBlockEnd:0}}><Headline weight="regular" dangerouslySetInnerHTML={this.createMarkup(this.props.question.instruction)}></Headline></Div>
-                    {this.props.question.links.length !== 0 ? <Header style={{padding:0}} mode="secondary">Полезные ссылки</Header> : null}
+                    {this.props.question.links.length !== 0 ? <Header className='heading' style={{padding:0}} mode="secondary">Полезные ссылки</Header> : null}
                         {this.props.question.links !== 0 &&
                             this.props.question.links.map((link, index) => {
                                 return (
@@ -61,7 +61,7 @@ class Instruction extends Component {
                         <TabbarItem selected text="Вопросы" onClick={this.props.go} data-to="questions">
                             <Icon28InfoCircleOutline />
                         </TabbarItem>
-                        <TabbarItem text="Календарь" onClick={this.props.go} data-to="acquaintance">
+                        <TabbarItem text="Календарь">
                             <Icon28CalendarOutline />
                         </TabbarItem>
                         <TabbarItem text="Профиль" onClick={this.props.go} data-to="home">
