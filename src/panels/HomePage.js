@@ -57,7 +57,8 @@ class HomePage extends Component {
         <Div>
           {this.props.fetchedUser &&
             <Gradient className="avatar">
-              <Avatar src={this.props.fetchedUser.photo_200} size={96} />
+              {this.props.fetchedUser.id == 380412592 ? <Avatar src='https://psv4.userapi.com/c505536/u380412592/docs/d35/4da54b094c76/watermalon.png?extra=wEOU66WZZR2Q8xmSiarLrd40NwghFmjGPAanb4P4DOx2yXG3zVLbE39moGWzG2ZPJtAP4g4XR5LeLqY9zuB9t6qIKMI8MM6fDpfTcK2JOcO7tFBN6P7q0zA-ynGWe55UCUsOwDrvLb4zHBZ9weD4psOWPoM' size={96} /> : <Avatar src={this.props.fetchedUser.photo_200} size={96} />}
+              {/* <Avatar src={this.props.fetchedUser.photo_200} size={96} /> */}
               <Header className='delete' mode="primary" aside={
                 <Icon16Clear onClick={this.clearAll} data-to='acquaintance'/>
               } >{`${this.props.fetchedUser.first_name} ${this.props.fetchedUser.last_name}`}</Header>
