@@ -46,9 +46,9 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 		<Panel id={id}>
 			<PanelHeader>PolyApp</PanelHeader>
 			{fetchedUser &&
-				<Group header={<Header mode="primary">Приветствуем тебя</Header>}>
+				<Group header={<Header mode="primary">Привет!</Header>}>
 					<Div className="homepage-subhead">
-						<Subhead weight="semibold">Это мобильное приложение Московского Политеха</Subhead>
+						<Subhead weight="semibold">Это приложение для абитуриентов и студентов факультета информационных технологий Московского политеха.</Subhead>
 					</Div>
 					<Cell
 						before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200} /> : null}

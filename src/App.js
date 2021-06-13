@@ -24,10 +24,11 @@ import EditStudent from './panels/EditStudent';
 import './css/gilroy.css';
 import './css/main.css';
 import { Icon56QuestionOutline } from '@vkontakte/icons';
-import { Icon24Dismiss } from '@vkontakte/icons';
+import { Icon56GhostOutline } from '@vkontakte/icons';
 
 const MODAL_CARD_ONE = 'modal-one';
 const MODAL_CARD_TWO = 'modal-two';
+const MODAL_CARD_THREE = 'modal-three';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState(localStorage.getItem('validation') ? 'home' : 'acquaintance');
@@ -109,6 +110,18 @@ const App = () => {
 			</Text>
           </Div>
 			</ModalCard>
+			<ModalCard
+				id={MODAL_CARD_THREE}
+				onClose={() => setActiveModal(null)}
+				icon={<Icon56GhostOutline />}
+				header="Просим прощения"
+			>
+							          <Div>
+            <Text>
+				К сожалению, страница календаря ещё находится в разработке.
+			</Text>
+          </Div>
+			</ModalCard>
 		</ModalRoot>
 	);
 	return (
@@ -129,8 +142,8 @@ const App = () => {
 					{/* Ветка два */}
 					<AboutStudent back={back} id="student-form-filling" go={go} />
 					<EditStudent back={back} go={go} id="edit" setActivePanel={setActivePanel} />
-					<HomePage id='home' setActivePanel={setActivePanel} fetchedUser={fetchedUser} go={go} />
-					<Questions updateData={updateData} id='questions' go={go} />
+					<HomePage MODAL_CARD_THREE={MODAL_CARD_THREE} setActiveModal={setActiveModal}  id='home' setActivePanel={setActivePanel} fetchedUser={fetchedUser} go={go} />
+					<Questions MODAL_CARD_THREE={MODAL_CARD_THREE} setActiveModal={setActiveModal} updateData={updateData} id='questions' go={go} />
 					<QuestionsList back={back} updateQuestion={updateQuestion} category={category} id='questions-list' go={go} />
 					<Instruction back={back} question={question} category={category} id='instruction' go={go} />
 					<CalendarPanel fetchedUser={fetchedUser} id='calendar' go={go} />

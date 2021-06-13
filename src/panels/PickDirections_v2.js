@@ -88,8 +88,8 @@ class PickDirections_v2 extends Component {
 			<Panel id={this.props.id}>
 				<PanelHeader left={<PanelHeaderBack onClick={this.props.go} data-to='acquaintance' />}>PolyApp</PanelHeader>
 				<Title className="pickDirections__title">
-					Хорошо, я всё записал. Вот программы обучения, выбери из них пять, которые тебе интересны.
-		</Title>
+					Для {localStorage.getItem('wantStudyForm') == 'Очная' ? 'очной формы обучения' : 'заочной формы обучени'} {localStorage.getItem('wantStudyLevel') == 'Бакалавриат' ? 'бакалавриата' : localStorage.getItem('wantStudyLevel') == 'Специалитет' ? 'специалитета' : 'магистратуры'} у нас есть такие направления. <br/><br/><i>Чтобы узнать подробнее про каждое, нажми на значок информации.</i>
+				</Title>
 				<Div style={{ marginLeft: 'auto', }}>
 					<List>
 						{this.componentDidMount ? <Div className="pickDirection__counter">Доступно для выбора <Counter className="pickDirection__counter__num">{this.state.counter <= 0 ? 0 : this.state.counter}</Counter></Div>   : null}
@@ -105,7 +105,7 @@ class PickDirections_v2 extends Component {
 							{Object.keys(newDirections[localStorage.getItem('wantStudyForm')][localStorage.getItem('wantStudyLevel')][index]) }
 							</Title>
 							{directions[Object.keys(directions)].map((direction, idx)=>{return(
-									<Div key="idx" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
+									<Div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
 										<FormItem className="directions__checkbox">
 											<Checkbox value={direction['Название направления']} checked={this.value} onChange={() => this.handleCheckboxChange(event)}>{direction['Название направления']}</Checkbox>
 										</FormItem>

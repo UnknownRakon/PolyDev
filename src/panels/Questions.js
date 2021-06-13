@@ -40,24 +40,24 @@ class Questions extends Component {
             <PanelHeader>PolyApp</PanelHeader>
             <Group>
                 <Div>
-                    <Caption className="captionCaps" level="1" weight="semibold" caps >Категории вопросов</Caption>
+                    <Caption style={{ fontSize:18  }} className="captionCaps" level="1" weight="semibold" caps >Категории вопросов</Caption>
                 </Div>
                 <CardGrid size="m" style={{marginBlockEnd: 70}}>
                     <Card className='card'  onClick={this.onClick('dorms')}  data-to="questions-list">
                         <Icon36HomeOutline  className="icon"/>
-                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10 }}>Общежития</Caption>
+                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10, fontSize:18 }}>Общежития</Caption>
                     </Card>
                     <Card className='card' onClick={this.onClick('study')} data-to="questions-list">
                         <Icon28BookOutline className="icon"/>
-                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10 }}>Учёба</Caption>
+                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10, fontSize:18  }}>Учёба</Caption>
                     </Card>
                     <Card className='card' onClick={this.onClick('buildings')} data-to="questions-list">
                         <Icon56SchoolOutline className="icon"/>
-                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10 }}>Корпуса</Caption>
+                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10 , fontSize:18 }}>Корпуса</Caption>
                     </Card>
                     <Card className='card' onClick={this.onClick('PD')} data-to="questions-list">
                         <Icon28LightbulbStarOutline className="icon"/>
-                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10 }}>ПД</Caption>
+                        <Caption level="1" weight="semibold" caps style={{ marginTop: 10, fontSize:18  }}>ПД</Caption>
                     </Card>
                 </CardGrid>
             </Group>
@@ -66,7 +66,7 @@ class Questions extends Component {
                     <TabbarItem text="Вопросы" selected>
                         <Icon28InfoCircleOutline/>
                     </TabbarItem>
-                    <TabbarItem text="Календарь" onClick={this.props.go} data-to="calendar">
+                    <TabbarItem text="Календарь" onClick={e=>this.props.setActiveModal(this.props.MODAL_CARD_THREE)}>
                         <Icon28CalendarOutline />
                     </TabbarItem>
                     <TabbarItem text="Профиль" onClick={this.props.go} data-to="home">

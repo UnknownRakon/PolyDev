@@ -33,7 +33,7 @@ class renderQusstions extends Component {
           this.state.data.dorms.map((unit, index) => {
             return (
               <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBottom: 15}}>
-									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12, fontSize: 20}}>{unit.question}</Text>
 								</Div>
             )
           }
@@ -43,7 +43,7 @@ class renderQusstions extends Component {
           this.state.data.study.map((unit, index) => {
             return (
               <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBottom: 15 }}>
-									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12, fontSize: 20}}>{unit.question}</Text>
 								</Div>           
               )
           }
@@ -53,7 +53,7 @@ class renderQusstions extends Component {
           this.state.data.buildings.map((unit, index) => {
             return (
               <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBottom: 15}}>
-									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12, fontSize: 20}}>{unit.question}</Text>
 								</Div>
                 )
           }
@@ -63,7 +63,7 @@ class renderQusstions extends Component {
           this.state.data.pd.map((unit, index) => {
             return (
               <Div  onClick={this.onClick(unit)} data-to="instruction" key={index} style={{ display: 'flex', alignItems: 'flex-start', padding: 0, marginBottom: 15}}>
-									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12}}>{unit.question}</Text>
+									<Icon20HelpOutline style={{alignSelf:'center'}}/><Text style={{paddingLeft: 12, fontSize: 20}}>{unit.question}</Text>
 								</Div>
               )
           }

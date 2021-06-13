@@ -12,7 +12,7 @@ import { Icon28UserCircleOutline } from '@vkontakte/icons';
 import { Icon28CalendarOutline } from '@vkontakte/icons';
 import { Icon28InfoCircleOutline } from '@vkontakte/icons';
 import { PanelHeaderBack } from '@vkontakte/vkui';
-import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
+import Headline from '@vkontakte/vkui/dist/components/Typography/Headline/Headline';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import { Icon36HomeOutline } from '@vkontakte/icons';
 import { Icon28BookOutline } from '@vkontakte/icons';
@@ -41,16 +41,15 @@ class Instruction extends Component {
                     {this.props.category == 'study' ? <Icon28BookOutline className="instruction__icon" /> : null}
                     {this.props.category == 'buildings' ? <Icon56SchoolOutline className="instruction__icon" /> : null}
                     {this.props.category == 'PD' ? <Icon28LightbulbStarOutline className="instruction__icon" /> : null}
-                    <Title style={{ marginBottom: 4, marginTop: 10, textAlign: 'center' }} level="2" weight="medium">{this.props.question.question}</Title>
+                    <Title style={{ marginTop: 10, textAlign: 'center' }} level="2" weight="medium">{this.props.question.question}</Title>
                 </Div>
                 <Group className="group-about" style={{marginBottom:130}}>
-                    <Header mode="secondary">Инструкция</Header>
-                    <Div><Text dangerouslySetInnerHTML={this.createMarkup(this.props.question.instruction)}></Text></Div>
-                    {this.props.question.links.length !== 0 ? <Header mode="secondary">Полезные ссылки</Header> : null}
+                    <Div style={{paddingBlockEnd:0}}><Headline weight="regular" dangerouslySetInnerHTML={this.createMarkup(this.props.question.instruction)}></Headline></Div>
+                    {this.props.question.links.length !== 0 ? <Header style={{padding:0}} mode="secondary">Полезные ссылки</Header> : null}
                         {this.props.question.links !== 0 &&
                             this.props.question.links.map((link, index) => {
                                 return (
-                                    <Div style={{paddingBottom:0}}><Link key={index} className='link-instruction' href={link.href} target="_blank">{link.name}</Link></Div>
+                                    <Div style={{paddingBlockEnd:0, paddingBlockStart: 0}}><Link key={index} className='link-instruction' href={link.href} target="_blank">{link.name}</Link></Div>
                                 )
                             }
                             )
