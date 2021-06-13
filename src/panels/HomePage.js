@@ -45,10 +45,6 @@ class HomePage extends Component {
     const specialty = localStorage.getItem('specialty');
     const dormnum = localStorage.getItem('dormnum');
     this.setState({ stud, group, year, dorm, prof, specialty, dormnum });
-    history.pushState(null, null, location.href);
-    window.onpopstate = function(event) {
-        history.go(1);
-    };
   }
   clearAll = () =>{
     window.localStorage.clear()
