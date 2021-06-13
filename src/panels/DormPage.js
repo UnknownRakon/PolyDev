@@ -34,15 +34,17 @@ class DormPage extends Component {
                 <Title level="1" weight="regular" className="dorm__title">Общежитие {dorms.Общежития[`${this.props.dorm}`].Номер} </Title>
                 <Group>
                 <Gallery
-                  slideWidth="custom"
+                  slideWidth="90%"
                   style={{ height: 300 }}
                   bullets="dark"
-                  showArrows
+                  showArrows={true}
+                  isDraggable={true}
                 >
                   {
                 dorms.Общежития[this.props.dorm].Фотографии.map((photo,index)=>{
+                  console.log(photo)
                   return (
-                    <img src={photo} key={index}/>
+                    <div style={{backgroundImage: `url(${photo})`, backgroundSize: 'cover'}} key={index}/>
                   )
                 })
               }
