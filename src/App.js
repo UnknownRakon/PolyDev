@@ -86,7 +86,7 @@ const App = () => {
 				id={MODAL_CARD_ONE}
 				onClose={() => setActiveModal(null)}
 				icon={<Icon56QuestionOutline />}
-				header="Что такое форма обучения?"
+				header="Какие бывают формы обучения?"
 			>
 			          <Div>
             <Text>
@@ -99,7 +99,7 @@ const App = () => {
 				id={MODAL_CARD_TWO}
 				onClose={() => setActiveModal(null)}
 				icon={<Icon56QuestionOutline />}
-				header="Что такое ступень образования?"
+				header="Какие бывают ступени образования?"
 			>
 							          <Div>
             <Text>
