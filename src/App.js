@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import View from '@vkontakte/vkui/dist/components/View/View';
 import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
-import { AdaptivityProvider, AppRoot, ModalCard, ModalRoot } from '@vkontakte/vkui';
+import { AdaptivityProvider, AppRoot, ModalCard, ModalRoot, ModalPage, Text, ModalPageHeader, PanelHeaderButton,Div} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 // import Start from './panels/Start';
@@ -24,6 +24,7 @@ import EditStudent from './panels/EditStudent';
 import './css/gilroy.css';
 import './css/main.css';
 import { Icon56QuestionOutline } from '@vkontakte/icons';
+import { Icon24Dismiss } from '@vkontakte/icons';
 
 const MODAL_CARD_ONE = 'modal-one';
 const MODAL_CARD_TWO = 'modal-two';
@@ -79,21 +80,34 @@ const App = () => {
 	const modal = (
 		<ModalRoot
 			activeModal={activeModal}
-		><ModalCard
+		>
+		<ModalCard
 				id={MODAL_CARD_ONE}
 				onClose={() => setActiveModal(null)}
 				icon={<Icon56QuestionOutline />}
 				header="Что такое форма обучения?"
-				subheader="ПУПУПУ"
 			>
+			          <Div>
+            <Text>
+			Очная - занятия проводятся по будням, и на некоторых направлениях по субботам. Если не посещать пары можно получить недопуск или даже отчислится.
+			<br/><br/>Заочная - вы встречаетесь с преподавателями вживую только два раза в году - на сессии. Объем программы такой же как и на очной, но большую часть студент изучает самостоятельно.
+			</Text>
+          </Div>
 			</ModalCard>
 			<ModalCard
 				id={MODAL_CARD_TWO}
 				onClose={() => setActiveModal(null)}
 				icon={<Icon56QuestionOutline />}
 				header="Что такое ступень образования?"
-				subheader="ПУПУПУ"
 			>
+							          <Div>
+            <Text>
+				Бакалавриат - базовый уровень высшего образования. Поступать на бакалавриат имеют право выпускники 11 класса, сдавшие егэ или выпускники колледжей по конкурсу внутренних экзаменов ВУЗа. Обучение длится 4 года.
+				<br/><br/>Специалитет - тоже высшее образование, но выпускники получают конкретную профессию и возможность преподавать. Обучение длится 5 лет.
+				<br/><br/>Магистратура - второй этап высшего образования.
+				Для поступления необходимо иметь диплом бакалавра или специалитета. Обучение длится 2 года
+			</Text>
+          </Div>
 			</ModalCard>
 		</ModalRoot>
 	);

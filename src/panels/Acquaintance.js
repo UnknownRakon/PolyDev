@@ -23,7 +23,7 @@ import { Title } from '@vkontakte/vkui';
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
-const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MODAL_CARD_TWO}) => {
+const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MODAL_CARD_TWO }) => {
 
 	const [want, setWant] = useState(false)
 	const [wantStudyForm, setForm] = useState('Очная')
@@ -60,38 +60,28 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 			<Group>
 				<Div>
 					<FormLayout>
-						<FormItem top="Анкета">
-							<Radio name="radio" onClick={() => setWant(false)} value="already" defaultChecked>Я уже учусь в Московском Политехе</Radio>
-							<Radio name="radio" onClick={() => scrollToSection()} value="newStudent">Я только собираюсь поступить</Radio>
+						<FormItem top="Расскажи про себя">
+							<Radio name="radio" onClick={() => setWant(false)} value="already" defaultChecked>Я уже студент</Radio>
+							<Radio name="radio" onClick={() => scrollToSection()} value="newStudent">Я хочу поступить</Radio>
 						</FormItem>
 					</FormLayout>
 				</Div>
 				{want ?
 					<Div style={{ marginBlockEnd: 50 }}>
 						<Caption className="captionCaps" level="1" weight="semibold" caps >
-							Круто! Мы рады, что тебя привлёк наш университет. Расскажи, какая форма обучения тебя интересует?
-					</Caption>
+							Круто, хороший выбор!
+						</Caption>
 						<FormLayout>
 							<Header mode="primary" aside={<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_ONE)} />} style={{ marginBottom: 10 }}>Форма обучения</Header>
-							<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0 }}>
-								<FormItem className="radio"><Radio name="radio" value="Очная" onClick={() => setForm('Очная')} defaultChecked>Очная</Radio></FormItem>
-							</Div>
-							<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBottom: 10 }}>
-								<FormItem className="radio"><Radio name="radio" value="Заочная" onClick={() => setForm('Заочная')}>Заочная</Radio></FormItem>
-							</Div>
+							<FormItem><Radio name="radio" value="Очная" onClick={() => setForm('Очная')} defaultChecked>Очная</Radio>
+								<Radio name="radio" value="Заочная" onClick={() => setForm('Заочная')}>Заочная</Radio></FormItem>
 						</FormLayout>
 						{wantStudyForm == 'Очная' ?
 							<FormLayout>
-								<Header mode="primary" style={{ marginBottom: 10 }} aside={	<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
-								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
-									<FormItem className="radio"><Radio name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio></FormItem>
-								</Div>
-								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
-									<FormItem className="radio"><Radio name="radio" value="Специалитет" onClick={() => setLevel('Специалитет')} >Специалитет</Radio></FormItem>
-								</Div>
-								<Div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 0, marginBlockEnd: 3 }}>
-									<FormItem className="radio"><Radio name="radio" value="Магистаратура" onClick={() => setLevel('Магистаратура')} >Магистратура</Radio></FormItem>
-								</Div>
+								<Header mode="primary" style={{ marginBottom: 10 }} aside={<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
+								<FormItem><Radio name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio>
+									<Radio name="radio" value="Специалитет" onClick={() => setLevel('Специалитет')} >Специалитет</Radio>
+									<Radio name="radio" value="Магистаратура" onClick={() => setLevel('Магистаратура')} >Магистратура</Radio></FormItem>
 							</FormLayout>
 							:
 							<FormLayout>
@@ -106,7 +96,7 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 					<Div>
 						<Button stretched size="l" mode="primary" onClick={(event) => handleNextClick(event)} data-to={want ? 'pick-directions' : 'student-form-filling'} >
 							Далее
-							</Button>
+						</Button>
 					</Div>
 				</FixedLayout>
 			</Group>
