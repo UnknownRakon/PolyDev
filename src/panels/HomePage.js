@@ -57,7 +57,7 @@ class HomePage extends Component {
         <Div>
           {this.props.fetchedUser &&
             <Gradient className="avatar">
-              {this.props.fetchedUser.id == 393320417 ? <Avatar src='https://psv4.userapi.com/c505536/u380412592/docs/d35/4da54b094c76/watermalon.png?extra=wEOU66WZZR2Q8xmSiarLrd40NwghFmjGPAanb4P4DOx2yXG3zVLbE39moGWzG2ZPJtAP4g4XR5LeLqY9zuB9t6qIKMI8MM6fDpfTcK2JOcO7tFBN6P7q0zA-ynGWe55UCUsOwDrvLb4zHBZ9weD4psOWPoM' size={96} /> : <Avatar src={this.props.fetchedUser.photo_200} size={96} />}
+              {this.props.fetchedUser.id == 393320417 ? <Avatar src='https://psv4.userapi.com/c536436/u136928687/docs/d36/8de1edaefd71/arbuz.png?extra=LBReun4rSK71aHwc6G-aSwQSLxgtbxO8YR8etgvaPobzBy55FKxWqj7mG9NsZSIX5JfTr75CVYWAgg0Ggd_zzKfEe1vHLXyHdnnIHy0zk0awc2z4He9YkaXkqHINT9rhAQ06VCOA0hFxRjWUNGcPV4k' size={96} /> : <Avatar src={this.props.fetchedUser.photo_200} size={96} />}
               {/* <Avatar src={this.props.fetchedUser.photo_200} size={96} /> */}
               <Header className='delete' mode="primary" aside={
                 <Icon16Clear onClick={this.clearAll} data-to='acquaintance'/>
