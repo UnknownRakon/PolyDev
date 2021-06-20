@@ -116,7 +116,7 @@ class AboutStudent extends Component {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
-                <FormItem top="Уровень">
+                <FormItem top="Ступень">
                     <Select name="level" value={this.state.level}
                         onChange={(event)=>this.thirdhand(event)}
                         placeholder="Не выбран"
