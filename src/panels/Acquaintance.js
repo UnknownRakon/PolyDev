@@ -81,7 +81,7 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 								<Header mode="primary" style={{ marginBottom: 10 }} aside={<Icon20QuestionOutline onClick={() => setActiveModal(MODAL_CARD_TWO)} />}>Ступень образования</Header>
 								<FormItem><Radio name="radio" value="Бакалавриат" onClick={() => setLevel('Бакалавриат')} defaultChecked>Бакалавриат</Radio>
 									<Radio name="radio" value="Специалитет" onClick={() => setLevel('Специалитет')} >Специалитет</Radio>
-									<Radio name="radio" value="Магистаратура" onClick={() => setLevel('Магистаратура')} >Магистратура</Radio></FormItem>
+									<Radio name="radio" value="Магистратура" onClick={() => setLevel('Магистратура')} >Магистратура</Radio></FormItem>
 							</FormLayout>
 							:
 							<FormLayout>

@@ -25,6 +25,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       group: '',
+      level: '',
       stud: '',
       prof: '',
       dorm: '',
@@ -44,7 +45,8 @@ class HomePage extends Component {
     const year = localStorage.getItem('year');
     const specialty = localStorage.getItem('specialty');
     const dormnum = localStorage.getItem('dormnum');
-    this.setState({ stud, group, year, dorm, prof, specialty, dormnum });
+    const level = localStorage.getItem('level');
+    this.setState({ stud, group, year, dorm, prof, specialty, dormnum, level});
   }
   clearAll = () =>{
     window.localStorage.clear()
@@ -69,6 +71,7 @@ class HomePage extends Component {
         </Div>
         <Group className="group-about" style={{marginBlockEnd: 70}}>
           <Header mode="primary" aside={<Icon20Write onClick={this.props.go} data-to='edit'/>}>Обо мне</Header>
+          <Header mode="secondary" aside={<Text>{this.state.level}</Text>}>Ступень:</Header>
           <Header mode="secondary" aside={<Text>{this.state.group}</Text>}>Группа:</Header>
           <Header mode="secondary" aside={<Text>{this.state.year}</Text>}>Курс:</Header>
           {this.state.dorm == 'Yes' ? <Header mode="secondary" aside={<Text>{this.state.dormnum}</Text>}>Общежитие №:</Header> : null}
@@ -80,7 +83,7 @@ class HomePage extends Component {
             <TabbarItem text="Вопросы" onClick={this.props.go} data-to="questions">
               <Icon28InfoCircleOutline />
             </TabbarItem>
-            <TabbarItem text="Календарь" onClick={e=>this.props.setActiveModal(this.props.MODAL_CARD_THREE)}>
+            <TabbarItem text="Календарь" onClick={this.props.go} data-to="calendar">
               <Icon28CalendarOutline />
             </TabbarItem>
             <TabbarItem text="Профиль" selected>

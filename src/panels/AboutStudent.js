@@ -11,16 +11,19 @@ import CustomSelectOption from '@vkontakte/vkui/dist/components/CustomSelectOpti
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import { PanelHeaderBack } from '@vkontakte/vkui';
+import Radio from '@vkontakte/vkui/dist/components/Radio/Radio';
+
 import $ from 'jquery';
 import 'jquery-mask-plugin/dist/jquery.mask.min.js';
 
 import '../css/AboutStudents.css'
-
+const newDirections = require('../json/new_directions.json');
 
 class AboutStudent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            level: '',
             year: '',
             specialty: '',
             group: '',
@@ -32,6 +35,7 @@ class AboutStudent extends Component {
             groupValid: true,
             studValid: true,
             profValid: true,
+
         }
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -45,7 +49,6 @@ class AboutStudent extends Component {
         const target = event.target;
         const value = target.value;
         const name = target.name;
-
         this.setState({
             [name]: value,
         },
@@ -83,12 +86,24 @@ class AboutStudent extends Component {
     validateForm = () => {
         this.setState({
             changed: this.state.groupValid &&
-                this.state.profValid && this.state.studValid && (this.state.year !== '') &&
-                (this.state.specialty !== '') && (this.state.dorm !== '') && (((this.state.dormnum !== '') && (this.state.dorm == 'Yes')) || (this.state.dorm == 'No'))
+                this.state.profValid && this.state.studValid && (this.state.year !== '') && ((this.state.level === 'Бакалавриат' && this.state.year != 5)||(this.state.level === 'Магистратура' && this.state.year < 3)||this.state.level === 'Специалитет' )&&
+                (this.state.level !== '')&&(this.state.specialty !== '') && (this.state.dorm !== '') && (((this.state.dormnum !== '') && (this.state.dorm == 'Yes')) || (this.state.dorm == 'No'))
         });
     };
+    thirdhand(event){
+        this.setState({specialty: ''});
+        var inputs = document.getElementsByTagName('input');
+
+        for (var i=0; i<inputs.length; i++)  {
+        if (inputs[i].type == 'radio')   {
+            inputs[i].checked = false;
+        }
+        }
+        this.handleInputChange(event)
+    }
     toStorage = () => {
-        const { year, specialty, group, dorm, stud, prof, dormnum } = this.state;
+        const {level, year, specialty, group, dorm, stud, prof, dormnum } = this.state;
+        localStorage.setItem('level', level);
         localStorage.setItem('year', year);
         localStorage.setItem('specialty', specialty);
         localStorage.setItem('group', group);
@@ -101,29 +116,69 @@ class AboutStudent extends Component {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader left={<PanelHeaderBack onClick={this.props.back} />}>PolyApp</PanelHeader>
-                <FormItem top="Курс">
-                    <Select name="year" value={this.state.year}
-                        onChange={this.handleInputChange}
+                <FormItem top="Уровень">
+                    <Select name="level" value={this.state.level}
+                        onChange={(event)=>this.thirdhand(event)}
                         placeholder="Не выбран"
-                        options={[{ value: 1, label: '1 курс' }, { value: 2, label: '2 курс' }, { value: 3, label: '3 курс' }, { value: 4, label: '4 курс' }]}
+                        options={[{ value: 'Бакалавриат', label: 'Бакалавриат' }, { value: 'Специалитет', label: 'Специалитет' }, { value: 'Магистратура', label: 'Магистратура' }]}
                         renderOption={({ option, ...restProps }) => (
                             <CustomSelectOption {...restProps} />
                         )}
                     />
                 </FormItem>
-                <FormItem top="Направление">
-                    <Select name="specialty" value={this.state.specialty}
-                        onChange={this.handleInputChange}
-                        placeholder="Не выбрано"
-                        options={[{ value: 'Информационная безопасность автоматизированных систем', label: 'Информационная безопасность автоматизированных систем' }, { value: 'Прикладная математика и информатика (Большие и открытые данные)', label: 'Прикладная математика и информатика (Большие и открытые данные)' }, { value: 'Веб-технологии', label: 'Веб-технологии' }, { value: 'Интеграция и программирование в САПР', label: 'Интеграция и программирование в САПР' }, { value: 'Программное обеспечение информационных систем', label: 'Программное обеспечение информационных систем' }, { value: 'Киберфизические системы', label: 'Киберфизические системы' }, { value: 'Большие и открытые данные', label: 'Большие и открытые данные' }, { value: 'Корпоративные информационные системы', label: 'Корпоративные информационные системы' }, { value: 'Информационная безопасность', label: 'Информационная безопасность' }]}
-                        renderOption={({ option, ...restProps }) => (
-                            <CustomSelectOption {...restProps} />
-                        )}
-                    />
-                </FormItem>
+                {this.state.level === 'Бакалавриат'?
+                    <FormItem top="Курс">
+                        <Select name="year" value={this.state.year}
+                            onChange={this.handleInputChange}
+                            placeholder="Не выбран"
+                            options={[{ value: 1, label: '1 курс' }, { value: 2, label: '2 курс' }, { value: 3, label: '3 курс' }, { value: 4, label: '4 курс' }]}
+                            renderOption={({ option, ...restProps }) => (
+                                <CustomSelectOption {...restProps} />
+                            )}
+                        />
+                    </FormItem>
+                :this.state.level === 'Специалитет'?
+                    <FormItem top="Курс">
+                        <Select name="year" value={this.state.year}
+                            onChange={this.handleInputChange}
+                            placeholder="Не выбран"
+                            options={[{ value: 1, label: '1 курс' }, { value: 2, label: '2 курс' }, { value: 3, label: '3 курс' }, { value: 4, label: '4 курс' }, { value: 5, label: '5 курс' }]}
+                            renderOption={({ option, ...restProps }) => (
+                                <CustomSelectOption {...restProps} />
+                            )}
+                        />
+                    </FormItem>
+                :this.state.level === 'Магистратура'?
+                    <FormItem top="Курс">
+                        <Select name="year" value={this.state.year}
+                            onChange={this.handleInputChange}
+                            placeholder="Не выбран"
+                            options={[{ value: 1, label: '1 курс' }, { value: 2, label: '2 курс' }]}
+                            renderOption={({ option, ...restProps }) => (
+                                <CustomSelectOption {...restProps} />
+                            )}
+                        />
+                    </FormItem>:null
+                }
+                
+
+                {this.state.level !== ''?
+                    newDirections.Очная[this.state.level].map((directions, index)=>{
+                        return(
+                            <FormItem key={index}>
+                            {directions[Object.keys(directions)].map((direction, idx) =>{
+                                return(
+                                    <Radio key={idx} onChange={this.handleInputChange} name="specialty" value={direction['Название направления']}>{direction['Название направления']}</Radio>
+                                )
+                            })}
+                        </FormItem>
+                        )
+                    })
+                :null
+                }
                 <FormItem top="Группа">
                     <Input type="text" inputMode={'numeric'} name="group" className={!this.state.groupValid && this.state.group != '' ? 'red' : null}
-                        autocomplete="off"
+                        autoСomplete="off"
                         value={this.state.group}
                         onChange={this.handleInputChange}
                         placeholder="000000" />
@@ -155,14 +210,14 @@ class AboutStudent extends Component {
                 }
                 <FormItem top="Номер студенческого(необязательно)">
                     <Input type="text" name="stud" inputMode={'numeric'} className={!this.state.studValid ? 'red' : null}
-                        autocomplete="off"
+                        autoСomplete="off"
                         value={this.state.stud}
                         onChange={this.handleInputChange}
                         placeholder="0000-0000" />
                 </FormItem>
                 <FormItem top="Номер профбилета(необязательно)" style={{ marginBlockEnd: 70, writingMode: 'horizontal-tb' }}>
                     <Input type="text" inputMode={'numeric'} name="prof" className={!this.state.profValid ? 'red' : null}
-                        autocomplete="off"
+                        autoСomplete="off"
                         value={this.state.prof}
                         onChange={this.handleInputChange}
                         placeholder="0000000000000000" />
