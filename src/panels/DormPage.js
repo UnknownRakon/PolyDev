@@ -42,7 +42,6 @@ class DormPage extends Component {
                 >
                   {
                 dorms.Общежития[this.props.dorm].Фотографии.map((photo,index)=>{
-                  console.log(photo)
                   return (
                     <div style={{backgroundImage: `url(${photo})`, backgroundSize: 'cover'}} key={index}/>
                   )
