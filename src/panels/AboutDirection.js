@@ -44,7 +44,9 @@ class AboutDirection extends Component {
                     <Cell indicator={this.state.interestedDirection['Бюджетных мест']}>Бюджетных мест</Cell>
                     <Cell indicator={this.state.interestedDirection['Платных мест']}>Платных мест</Cell>
                 </List>
-                <Text weight="medium" style={{ marginBottom: 16, padding: 16, marginBlockEnd: 70}} dangerouslySetInnerHTML={this.createMarkup(this.state.interestedDirection['Описание'])}></Text>
+                <Text weight="medium" style={{ marginBottom: 0, padding: 16, paddingBottom: 0}} dangerouslySetInnerHTML={this.createMarkup(this.state.interestedDirection['Описание'])}></Text>
+                <Div style={{paddingBlockEnd:0, paddingBlockStart: 0}}><Link className='link-instruction' href={this.state.interestedDirection['Учебный план']} target="_blank">Учебный план</Link></Div>
+                <Div style={{paddingBlockEnd:0, paddingBlockStart: 0, marginBlockEnd: 70}}><Link className='link-instruction' href={this.state.interestedDirection['Карта направления']} target="_blank">Карта направления</Link></Div>
                 <FixedLayout filled vertical="bottom">
                 <Div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center!important' }}>
                     <Link style={{width: '100%', textAlign: 'center', color:"var(--button_primary_foreground)", 
