@@ -61,7 +61,7 @@ class Instruction extends Component {
                         <TabbarItem selected text="Вопросы" onClick={this.props.go} data-to="questions">
                             <Icon28InfoCircleOutline />
                         </TabbarItem>
-                        <TabbarItem text="Календарь">
+                        <TabbarItem text="Календарь" onClick={this.props.go} data-to="calendar">
                             <Icon28CalendarOutline />
                         </TabbarItem>
                         <TabbarItem text="Профиль" onClick={this.props.go} data-to="home">
