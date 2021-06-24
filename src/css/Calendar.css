@@ -13,3 +13,7 @@
     background-color: #57394a !important;
     color: #e0c2c0 !important;
 }
+.highlight:focus{
+    background-color: #57394a !important;
+    color: #e0c2c0 !important;
+}

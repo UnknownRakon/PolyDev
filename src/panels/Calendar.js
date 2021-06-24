@@ -3,10 +3,8 @@ import bridge from '@vkontakte/vk-bridge';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import { FormItem, Input } from '@vkontakte/vkui';
@@ -14,6 +12,7 @@ import { Tabbar, TabbarItem } from '@vkontakte/vkui';
 import { Icon28UserCircleOutline } from '@vkontakte/icons';
 import { Icon28CalendarOutline } from '@vkontakte/icons';
 import { Icon28InfoCircleOutline } from '@vkontakte/icons';
+import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 
 
@@ -43,10 +42,6 @@ const CalendarPanel = ({ id, go, back }) => {
 			value: JSON.stringify(text)
 		});
 	}
-
-
-	// календарь
-
 
 	async function deleteAllNotifies() {
 		try {
@@ -86,32 +81,25 @@ const CalendarPanel = ({ id, go, back }) => {
 				setText('Нет напоминаний');
 				return;
 			}
-			let s = key + '\n' + Object.keys((notifies[key])).join('\n');
-			console.log(s);
-			setText(s);
+			setChoosed(key)
+			setText(Object.keys((notifies[key])));
 		}
 		else {
 			try {
-
 				const storageData = await bridge.send('VKWebAppStorageGet', { keys: ['notifies'] });
 				const notifies = JSON.parse(storageData.keys[0].value);
 
 				if (!notifies || !Object.keys(notifies).length) {
-					console.log("No notifies today");
-
 					return;
 				}
 				setNotifies(notifies);
 
 				if (!notifies[key]) {
-					console.log('Нет напоминаний');
 					setText('Нет напоминаний');
 					return;
 				}
-
-				let s = key + '\n' + Object.keys((notifies[key])).join('\n');
-				console.log(s);
-				setText(s);
+				setChoosed(key)
+				setText(Object.keys((notifies[key])));
 			} catch (error) {
 				console.error(error);
 				console.log('no any notify');
@@ -199,9 +187,22 @@ const CalendarPanel = ({ id, go, back }) => {
 			return 'highlight';
 	}
 
-	//
+	async function getAllNotifies() {
+		if (Object.keys(notifies).length) console.log(notifies);
+		else {
+			try {
+			const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['notifies']});	
+			const value = JSON.parse(storageData.keys[0].value);	
+			setNotifies(value);
+			console.log(value);
+			}
+			catch (error) {
+				console.error(error);
+			}
+		}
+	}
 
-	// useEffect(() => {
+	useEffect(() => {
 	// 	async function getText() {
 	// 		try {	
 	// 		const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['someKey']});
@@ -212,8 +213,8 @@ const CalendarPanel = ({ id, go, back }) => {
 	// 		}
 	// }
 	// getText();
-	// getAllNotifies();
-	// }, []);
+	getAllNotifies();
+	}, []);
 
 	return (
 		<Panel id={id}>
@@ -250,11 +251,11 @@ const CalendarPanel = ({ id, go, back }) => {
 				/></Div>
 			</Group>
 			<Group>
-				<Div style={{ whiteSpace: 'pre-line' }}>
-					{text}
+				<Div>
+				<Title level="1" weight="semibold" style={{ marginBottom: 16, textAlign: 'center' }}>Запланированно на: {choosedDate}</Title>
+				<Title level="2" weight="regular" style={{ marginBottom: 16, textAlign: 'center'}}>{text}</Title>
 				</Div>
 			</Group>
-
 			<FixedLayout filled vertical="bottom">
 				<Tabbar className='tabbar-padding'>
 					<TabbarItem text="Вопросы" onClick={go} data-to="questions">
