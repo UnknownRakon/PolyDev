@@ -250,7 +250,7 @@ const CalendarPanel = ({ id, go, back }) => {
 					tileClassName={({ date }) => highlightDates(date)}
 				/></Div>
 			</Group>
-			<Group>
+			<Group style={{marginBottom:130}}>
 				<Div>
 				<Title level="1" weight="semibold" style={{ marginBottom: 16, textAlign: 'center' }}>Запланированно на: {choosedDate}</Title>
 				<Title level="2" weight="regular" style={{ marginBottom: 16, textAlign: 'center'}}>{text}</Title>
