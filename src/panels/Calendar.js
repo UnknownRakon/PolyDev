@@ -134,7 +134,7 @@ const CalendarPanel = ({ id, go, back }) => {
 
 		if (!notifies[key]) notifies[key] = {};
 
-		notifies[key][message] = "12:00:00";
+		notifies[key][message] = "16:25:00";
 
 		try {
 			await bridge.send('VKWebAppStorageSet', {
@@ -231,7 +231,7 @@ const CalendarPanel = ({ id, go, back }) => {
 						onDateChange={(value) => { console.log(value); setDate(value) }}
 						dayPlaceholder="ДД"
 						monthPlaceholder="ММММ"
-						yearPlaceholder="ГГГГ" /></Div>
+						yearPlaceholder="ГГГГ" placeholder='Дата'/></Div>
 			</Group>
 			<Group>
 				<Div style={{ display: 'flex' }}>
