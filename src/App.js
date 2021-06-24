@@ -25,7 +25,6 @@ import './css/gilroy.css';
 import './css/main.css';
 import { Icon56QuestionOutline } from '@vkontakte/icons';
 import { Icon56GhostOutline } from '@vkontakte/icons';
-import arbuz from './img/arbuz.png'
 
 const MODAL_CARD_ONE = 'modal-one';
 const MODAL_CARD_TWO = 'modal-two';

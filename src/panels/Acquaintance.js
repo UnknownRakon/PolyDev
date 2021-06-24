@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import bridge from '@vkontakte/vk-bridge';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
@@ -28,9 +29,11 @@ const Acquaintance = ({ id, go, fetchedUser, setActiveModal, MODAL_CARD_ONE, MOD
 	const [want, setWant] = useState(false)
 	const [wantStudyForm, setForm] = useState('Очная')
 	const [wantStudyLevel, setLevel] = useState('Бакалавриат')
+	const [allow, setAllow] = useState(true)
+	const [result, setResult] = useState()
 
 	useEffect(() => {
-		localStorage.setItem('selectedGroups', []);
+		localStorage.setItem('selectedGroups', []);	
 	});
 
 	const handleNextClick = (event) => {

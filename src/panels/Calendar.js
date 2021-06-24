@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 
-import Panel  from '@vkontakte/vkui/dist/components/Panel/Panel';
+import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
+import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import {Cell} from '@vkontakte/vkui/dist/components/Cell/Cell';
+import { Cell } from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import { FormItem, Input } from '@vkontakte/vkui';
@@ -23,17 +24,16 @@ import Calendar from 'react-calendar';
 
 import '../css/Calendar.css';
 
-const CalendarPanel = ({ id, go, back}) => {
-    const [notifies, setNotifies] = useState({});
+const CalendarPanel = ({ id, go, back }) => {
+	const [notifies, setNotifies] = useState({});
 	const [value, setValue] = useState('');
-
-	const [text, setText] = useState([]);
-
+	const [text, setText] = useState('Нет напоминаний');
 	const [date, setDate] = useState();
 	const [allowedNotifies, setAllow] = useState(false);
+	const [choosedDate, setChoosed] = useState()
 
 	const copyText = () => {
-		bridge.send('VKWebAppCopyText', {text: value})
+		bridge.send('VKWebAppCopyText', { text: value })
 	}
 
 	const saveText = async (text) => {
@@ -43,11 +43,11 @@ const CalendarPanel = ({ id, go, back}) => {
 			value: JSON.stringify(text)
 		});
 	}
-	
+
 
 	// календарь
 
-	
+
 	async function deleteAllNotifies() {
 		try {
 			await bridge.send('VKWebAppStorageSet', {
@@ -63,38 +63,38 @@ const CalendarPanel = ({ id, go, back}) => {
 		console.log('notifies removed');
 	}
 
-	async function getAllNotifies() {
-		if (Object.keys(notifies).length) console.log(notifies);
-		else {
-			try {
-			const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['notifies']});	
-			const value = JSON.parse(storageData.keys[0].value);	
-			setNotifies(value);
-			console.log(value);
-			}
-			catch (error) {
-				console.error(error);
-			}
-		}
-	}
+	// async function getAllNotifies() {
+	// 	if (Object.keys(notifies).length) console.log(notifies);
+	// 	else {
+	// 		try {
+	// 		const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['notifies']});	
+	// 		const value = JSON.parse(storageData.keys[0].value);	
+	// 		setNotifies(value);
+	// 		console.log(value);
+	// 		}
+	// 		catch (error) {
+	// 			console.error(error);
+	// 		}
+	// 	}
+	// }
 
 	async function showNotifies(date) {
-		const key = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear();
+		const key = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 		if (Object.keys(notifies).length) {
-            if (!notifies[key]) {
-                console.log('Нет напоминаний');
-                setText('Нет напоминаний');
-                return;
-            }
+			if (!notifies[key]) {
+				console.log('Нет напоминаний');
+				setText('Нет напоминаний');
+				return;
+			}
 			let s = key + '\n' + Object.keys((notifies[key])).join('\n');
-			console.log('This is s' + s);
+			console.log(s);
 			setText(s);
 		}
 		else {
 			try {
-				
-				const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['notifies']});	
-				const notifies = JSON.parse(storageData.keys[0].value);	
+
+				const storageData = await bridge.send('VKWebAppStorageGet', { keys: ['notifies'] });
+				const notifies = JSON.parse(storageData.keys[0].value);
 
 				if (!notifies || !Object.keys(notifies).length) {
 					console.log("No notifies today");
@@ -103,11 +103,11 @@ const CalendarPanel = ({ id, go, back}) => {
 				}
 				setNotifies(notifies);
 
-                if (!notifies[key]) {
-                    console.log('Нет напоминаний');
-                    setText('Нет напоминаний');
-                    return;
-                }
+				if (!notifies[key]) {
+					console.log('Нет напоминаний');
+					setText('Нет напоминаний');
+					return;
+				}
 
 				let s = key + '\n' + Object.keys((notifies[key])).join('\n');
 				console.log(s);
@@ -123,38 +123,37 @@ const CalendarPanel = ({ id, go, back}) => {
 
 		if (!choosedDate || !choosedDate.day || !choosedDate.month || !choosedDate.year) {
 			console.error('Введите дату');
-            setText('Введите дату');
+			setText('Введите дату');
 			return;
 		}
-        console.log('raw date: ' + Object.keys(choosedDate));
+		console.log('raw date: ' + Object.keys(choosedDate));
 
-		// if (!allowedNotifies) {
-		// 	try {
-		// 		const allow = await bridge.send("VKWebAppAllowNotifications");
+		if (!allowedNotifies) {
+			try {
+				const allow = await bridge.send("VKWebAppAllowNotifications");
 
-		// 		setAllow(allow);
-		// 	}
-		// 	catch (error){
-		// 		console.error(error);
-		// 	}
-		// }
+				setAllow(allow);
+			}
+			catch (error) {
+				console.error(error);
+			}
+		}
 		const key = choosedDate.day + '/' + choosedDate.month + '/' + choosedDate.year;
-        console.log('parsed date: ' + key);
-        console.log('mesage: ' + message);
-        setText([message, ...text])
-        console.log('notifies: ' + notifies);
-        console.log('notifies_keys: ' + Object.keys(notifies));
-		
+		console.log('parsed date: ' + key);
+		console.log('mesage: ' + message);
+		console.log('notifies: ' + notifies);
+		console.log('notifies_keys: ' + Object.keys(notifies));
+
 		if (!notifies[key]) notifies[key] = {};
 
 		notifies[key][message] = "12:00:00";
 
-		try{
+		try {
 			await bridge.send('VKWebAppStorageSet', {
 				key: 'notifies',
 				value: JSON.stringify(notifies)
 			});
-			
+
 			setNotifies({});
 			setNotifies(notifies);
 		}
@@ -165,108 +164,110 @@ const CalendarPanel = ({ id, go, back}) => {
 
 		console.log('notify added');
 
-		// if (allowedNotifies) {
-		// 	 try {
-		// 		const auth = await bridge.send("VKWebAppGetAuthToken", {
-		// 			"app_id":7810593,
-		// 			"scope":"friends,status"
-		// 		});
+		if (allowedNotifies) {
+			try {
+				const auth = await bridge.send("VKWebAppGetAuthToken", {
+					"app_id": 7810593,
+					"scope": "friends,status"
+				});
 
-		// 		const response = await bridge.send("VKWebAppCallAPIMethod", 
-		// 		{
-		// 			"method": "notifications.sendMessage",
-		// 			"request_id": "32test",
-		// 			"params": {
-		// 				"user_ids": "227866565",
-		// 				"v": "5.130",
-		// 				"access_token":'O7ShySyE1AcQkeoUXO74',
-		// 				"message": "Hello API"
-		// 			}
-		// 		});
+				const response = await bridge.send("VKWebAppCallAPIMethod",
+					{
+						"method": "notifications.sendMessage",
+						"request_id": "32test",
+						"params": {
+							"user_ids": "227866565",
+							"v": "5.130",
+							"access_token": 'O7ShySyE1AcQkeoUXO74',
+							"message": "Hello API"
+						}
+					});
 
-		// 		console.log(response);
-		// 	} 
-		// 	catch (error) {
-		// 		console.error(error);
-		// 	}
-		// }
+				console.log(response);
+			}
+			catch (error) {
+				console.error(error);
+			}
+		}
+		document.getElementById('input').value = ''
 	}
 
 	function highlightDates(date) {
-		const parsedDate = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear();
+		const parsedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 
-		if (Object.keys(notifies).find(notifyDate => parsedDate == notifyDate)) 
+		if (Object.keys(notifies).find(notifyDate => parsedDate == notifyDate))
 			return 'highlight';
 	}
 
 	//
 
-	useEffect(() => {
-		async function getText() {
-			try {	
-			const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['someKey']});
+	// useEffect(() => {
+	// 	async function getText() {
+	// 		try {	
+	// 		const storageData = await bridge.send('VKWebAppStorageGet', {keys: ['someKey']});
 
-			setValue(JSON.parse(storageData.keys[0].value));
-			} catch(error) {
-				console.error('error:', error);
-			}
-	}
-	getText();
-    getAllNotifies();
-	}, []);
+	// 		setValue(JSON.parse(storageData.keys[0].value));
+	// 		} catch(error) {
+	// 			console.error('error:', error);
+	// 		}
+	// }
+	// getText();
+	// getAllNotifies();
+	// }, []);
 
-    return (
+	return (
 		<Panel id={id}>
-            <PanelHeader>PolyApp</PanelHeader>
+			<PanelHeader>PolyApp</PanelHeader>
 			<Group>
+				<FormItem>
+					<Input id='input' type='text' placeholder='Введите текст уведомления' onChange={(e) => saveText(e.target.value)} />
+				</FormItem>
 				<Div>
-					<Button size='m' mode='primary' onClick={getAllNotifies}>
-						Уведомления
-					</Button>
-					<Button size='m' mode='primary' onClick={() => addNotifies(date, document.getElementById('input').value)}>
+					<DatePicker
+						min={{ day: 11, month: 6, year: 2021 }}
+						max={{ day: 1, month: 1, year: 2024 }}
+						popupDirection='bottom'
+						onDateChange={(value) => { console.log(value); setDate(value) }}
+						dayPlaceholder="ДД"
+						monthPlaceholder="ММММ"
+						yearPlaceholder="ГГГГ" /></Div>
+			</Group>
+			<Group>
+				<Div style={{ display: 'flex' }}>
+					<Button stretched size='l' style={{ marginRight: 8 }} mode='primary' onClick={() => addNotifies(date, document.getElementById('input').value)}>
 						Добавить уведомление
 					</Button>
-					<Button size='m' mode='primary' onClick={() => deleteAllNotifies()}>
-						Удалить уведомления
+					<Button stretched mode="secondary" size='l' onClick={() => deleteAllNotifies()}>
+						Удалить все уведомления
 					</Button>
-					
-					<FormItem >
-					<Input id='input' type='text' placeholder='Hello world' onChange={(e) => saveText(e.target.value)} defaultValue={value}/>
-					</FormItem>
 				</Div>
-                <DatePicker 
-                min={{day: 11, month: 6, year: 2021}}
-                max={{day: 1, month: 1, year: 2024}}
-                popupDirection='bottom'
-                onDateChange={(value) => {console.log(value); setDate(value)}}
-                dayPlaceholder="ДД"
-                monthPlaceholder="ММММ"
-                yearPlaceholder="ГГГГ"/>
+			</Group>
+			<Group>
+				<Div><Calendar className="calendar"
+					onClickDay={showNotifies}
+					value={new Date()}
+					tileClassName={({ date }) => highlightDates(date)}
+				/></Div>
+			</Group>
+			<Group>
+				<Div style={{ whiteSpace: 'pre-line' }}>
+					{text}
+				</Div>
+			</Group>
 
-                {/* <Calendar 		
-                onClickDay={showNotifies}
-                value={new Date()}
-                tileClassName={({ date }) => highlightDates(date)}
-                /> */}
-
-                <Div style={{whiteSpace: 'pre-line'}}>
-                    {text}
-                </Div>
-            </Group>
-
-                <FixedLayout filled vertical="bottom">
-                <Tabbar className='tabbar-padding'>
-                    <TabbarItem text="Вопросы" onClick={go} data-to="questions">
-                        <Icon28InfoCircleOutline/>
-                    </TabbarItem>
-                    <TabbarItem text="Календарь" selected>
-                        <Icon28CalendarOutline />
-                    </TabbarItem>
-                    <TabbarItem text="Профиль" onClick={go} data-to="home">
-                        <Icon28UserCircleOutline/>
-                    </TabbarItem>
-                </Tabbar>
-            </FixedLayout>
+			<FixedLayout filled vertical="bottom">
+				<Tabbar className='tabbar-padding'>
+					<TabbarItem text="Вопросы" onClick={go} data-to="questions">
+						<Icon28InfoCircleOutline />
+					</TabbarItem>
+					<TabbarItem text="Календарь" selected>
+						<Icon28CalendarOutline />
+					</TabbarItem>
+					<TabbarItem text="Профиль" onClick={go} data-to="home">
+						<Icon28UserCircleOutline />
+					</TabbarItem>
+				</Tabbar>
+			</FixedLayout>
 		</Panel>
 	);
 }

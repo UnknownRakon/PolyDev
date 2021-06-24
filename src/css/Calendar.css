@@ -1,3 +1,15 @@
+.calendar{
+    margin: 0 auto;
+    background-color: #e0c2c0 !important;
+    color: #57394a !important;
+    border:none !important;
+    outline: none !important;
+}
+.calendar *:focus{
+    background-color: inherit !important;
+    color: inherit !important;
+}
 .highlight {
-    background-color: aqua;
+    background-color: #57394a !important;
+    color: #e0c2c0 !important;
 }
