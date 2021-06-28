@@ -95,7 +95,7 @@ const CalendarPanel = ({ fetchedUser, id, go }) => {
 
 	async function showNotifies(date) {
 		console.log('show notify');
-		const key = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+		const key = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
 
 		const datePicker = {
 			day: date.getDate(),
@@ -217,7 +217,7 @@ const CalendarPanel = ({ fetchedUser, id, go }) => {
 				console.error(error);
 			}
 		}
-		const key = date.day + '/' + date.month + '/' + date.year;
+		const key = date.day + '.' + date.month + '.' + date.year;
 		console.log('parsed date: ' + key);
 		console.log('mesage: ' + message);
 		console.log('notifies: ' + notifies);
@@ -290,7 +290,7 @@ const CalendarPanel = ({ fetchedUser, id, go }) => {
 	}
 
 	function highlightDates(date) {
-		const parsedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+		const parsedDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
 
 		if (Object.keys(notifies).find(notifyDate => parsedDate == notifyDate))
 			return 'highlight';
