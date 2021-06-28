@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PolyDev/static/css/main.4c33e9d0.chunk.css",
-    "main.js": "/PolyDev/static/js/main.25e35ed9.chunk.js",
-    "main.js.map": "/PolyDev/static/js/main.25e35ed9.chunk.js.map",
+    "main.js": "/PolyDev/static/js/main.bcbe944b.chunk.js",
+    "main.js.map": "/PolyDev/static/js/main.bcbe944b.chunk.js.map",
     "runtime-main.js": "/PolyDev/static/js/runtime-main.7cbd0ce7.js",
     "runtime-main.js.map": "/PolyDev/static/js/runtime-main.7cbd0ce7.js.map",
     "static/css/2.1826fda3.chunk.css": "/PolyDev/static/css/2.1826fda3.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.1826fda3.chunk.css",
     "static/js/2.4dd50790.chunk.js",
     "static/css/main.4c33e9d0.chunk.css",
-    "static/js/main.25e35ed9.chunk.js"
+    "static/js/main.bcbe944b.chunk.js"
   ]
 }
