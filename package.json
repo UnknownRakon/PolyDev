@@ -1,8 +1,8 @@
 {
-  "name": "PolyApp_v2",
+  "name": "PolyDev",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://unknownrakon.github.io/PolyApp_v2/",
+  "homepage": "https://unknownrakon.github.io/PolyDev/",
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
