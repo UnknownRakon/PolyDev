@@ -31,7 +31,7 @@ class Instruction extends Component {
     }
     createMarkup = (text) => {
         return { __html: text };
-      }
+    }
     render() {
         return (
             <Panel id={this.props.id}>
@@ -43,18 +43,18 @@ class Instruction extends Component {
                     {this.props.category == 'PD' ? <Icon28LightbulbStarOutline className="instruction__icon" /> : null}
                     <Title style={{ marginTop: 10, textAlign: 'center' }} level="2" weight="medium">{this.props.question.question}</Title>
                 </Div>
-                <Group className="group-about" style={{marginBottom:130}}>
-                    <Div style={{paddingBlockEnd:0}}><Headline weight="regular" dangerouslySetInnerHTML={this.createMarkup(this.props.question.instruction)}></Headline></Div>
-                    {this.props.question.links.length !== 0 ? <Header className='heading' style={{padding:0}} mode="secondary">Полезные ссылки</Header> : null}
-                        {this.props.question.links !== 0 &&
-                            this.props.question.links.map((link, index) => {
-                                return (
-                                    <Div style={{paddingBlockEnd:0, paddingBlockStart: 0}}><Link key={index} className='link-instruction' href={link.href} target="_blank">{link.name}</Link></Div>
-                                )
-                            }
+                <Group className="group-about" style={{ marginBottom: 130 }}>
+                    <Div style={{ paddingBlockEnd: 0 }}><Headline weight="regular" dangerouslySetInnerHTML={this.createMarkup(this.props.question.instruction)}></Headline></Div>
+                    {this.props.question.links.length !== 0 ? <Header className='heading' style={{ padding: 0 }} mode="secondary">Полезные ссылки</Header> : null}
+                    {this.props.question.links !== 0 &&
+                        this.props.question.links.map((link, index) => {
+                            return (
+                                <Div style={{ paddingBlockEnd: 0, paddingBlockStart: 0 }}><Link key={index} className='link-instruction' href={link.href} target="_blank">{link.name}</Link></Div>
                             )
                         }
-                    
+                        )
+                    }
+
                 </Group>
                 <FixedLayout filled vertical="bottom">
                     <Tabbar className='tabbar-padding'>
@@ -73,11 +73,5 @@ class Instruction extends Component {
         )
     }
 }
-
-Instruction.propTypes = {
-    id: PropTypes.string.isRequired,
-    go: PropTypes.func.isRequired,
-    updateData: PropTypes.func.isRequired
-};
 
 export default Instruction;
