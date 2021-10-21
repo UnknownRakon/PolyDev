@@ -16,6 +16,8 @@ import { PanelHeaderBack } from '@vkontakte/vkui';
 
 const newDirections = require('../json/new_directions.json');
 
+// ГАВНА КЛАССЫ
+
 class PickDirections_v2 extends Component {
 	constructor(props) {
 		super(props);
@@ -56,7 +58,7 @@ class PickDirections_v2 extends Component {
 			}
 			let t = localStorage.getItem('selectedGroups');
 			for (let i = 0; i < t.length; i++) {
-				if (localStorage.getItem('selectedGroups')[i] === 't') {this.state.counter--}
+				if (localStorage.getItem('selectedGroups')[i] === 't') { this.state.counter-- }
 			}
 		}
 	}
@@ -88,35 +90,37 @@ class PickDirections_v2 extends Component {
 			<Panel id={this.props.id}>
 				<PanelHeader left={<PanelHeaderBack onClick={this.props.go} data-to='acquaintance' />}>PolyApp</PanelHeader>
 				<Title className="pickDirections__title">
-					Для {localStorage.getItem('wantStudyForm') == 'Очная' ? 'очной формы обучения' : 'заочной формы обучени'} {localStorage.getItem('wantStudyLevel') == 'Бакалавриат' ? 'бакалавриата' : localStorage.getItem('wantStudyLevel') == 'Специалитет' ? 'специалитета' : 'магистратуры'} у нас есть такие направления: <br/><i style={{fontSize: 12, lineHeight:0.9}}>Чтобы узнать подробнее про каждое, нажми на значок информации.</i>
+					Для {localStorage.getItem('wantStudyForm') == 'Очная' ? 'очной формы обучения' : 'заочной формы обучени'} {localStorage.getItem('wantStudyLevel') == 'Бакалавриат' ? 'бакалавриата' : localStorage.getItem('wantStudyLevel') == 'Специалитет' ? 'специалитета' : 'магистратуры'} у нас есть такие направления: <br /><i style={{ fontSize: 12, lineHeight: 0.9 }}>Чтобы узнать подробнее про каждое, нажми на значок информации.</i>
 				</Title>
 				<Div style={{ marginLeft: 'auto', }}>
 					<List>
-						{this.componentDidMount ? <Div className="pickDirection__counter">Доступно для выбора <Counter className="pickDirection__counter__num">{this.state.counter <= 0 ? 0 : this.state.counter}</Counter></Div>   : null}
+						{this.componentDidMount ? <Div className="pickDirection__counter">Доступно для выбора <Counter className="pickDirection__counter__num">{this.state.counter <= 0 ? 0 : this.state.counter}</Counter></Div> : null}
 					</List>
 				</Div>
 				<Div className="pickDirections__fit" >
 					ФИТ
 				</Div>
-				{newDirections[localStorage.getItem('wantStudyForm')][localStorage.getItem('wantStudyLevel')].map((directions, index)=>{
-					return(
+				{newDirections[localStorage.getItem('wantStudyForm')][localStorage.getItem('wantStudyLevel')].map((directions, index) => {
+					return (
 						<Div key={index} className="pickDirections__direction">
 							<Title style={{ marginLeft: 16, padding: 16, marginRight: 16, marginTop: 16, borderRadius: 7, textAlign: 'center', fontSize: '1.2rem', margin: '0 auto' }}>
-							{Object.keys(newDirections[localStorage.getItem('wantStudyForm')][localStorage.getItem('wantStudyLevel')][index]) }
+								{Object.keys(newDirections[localStorage.getItem('wantStudyForm')][localStorage.getItem('wantStudyLevel')][index])}
 							</Title>
-							{directions[Object.keys(directions)].map((direction, idx)=>{return(
+							{directions[Object.keys(directions)].map((direction, idx) => {
+								return (
 									<Div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0' }}>
 										<FormItem className="directions__checkbox">
 											<Checkbox value={direction['Название направления']} checked={this.value} onChange={() => this.handleCheckboxChange(event)}>{direction['Название направления']}</Checkbox>
 										</FormItem>
 										<Icon20Info onClick={this.handleInfoClick(JSON.stringify(direction))} data-to="about-direction" />
 									</Div>
-								)})	
+								)
+							})
 							}
-						</Div>	
+						</Div>
 					)
-				}) 	
-				}		
+				})
+				}
 				<FixedLayout filled className="pickDirections__fixed" vertical="bottom">
 					<Div>
 						<Button stretched size="l" mode="primary"

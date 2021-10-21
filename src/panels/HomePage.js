@@ -18,7 +18,7 @@ import { Icon20Write } from '@vkontakte/icons';
 import { Icon16Clear } from '@vkontakte/icons';
 import '../css/Home.css'
 
-
+// ГАВНА КЛАССЫ
 
 class HomePage extends Component {
   constructor(props) {
@@ -46,9 +46,9 @@ class HomePage extends Component {
     const specialty = localStorage.getItem('specialty');
     const dormnum = localStorage.getItem('dormnum');
     const level = localStorage.getItem('level');
-    this.setState({ stud, group, year, dorm, prof, specialty, dormnum, level});
+    this.setState({ stud, group, year, dorm, prof, specialty, dormnum, level });
   }
-  clearAll = () =>{
+  clearAll = () => {
     window.localStorage.clear()
     this.props.setActivePanel('acquaintance')
   }
@@ -62,15 +62,15 @@ class HomePage extends Component {
               {this.props.fetchedUser.id == 393320417 ? <Avatar src='https://psv4.userapi.com/c536436/u136928687/docs/d36/8de1edaefd71/arbuz.png?extra=LBReun4rSK71aHwc6G-aSwQSLxgtbxO8YR8etgvaPobzBy55FKxWqj7mG9NsZSIX5JfTr75CVYWAgg0Ggd_zzKfEe1vHLXyHdnnIHy0zk0awc2z4He9YkaXkqHINT9rhAQ06VCOA0hFxRjWUNGcPV4k' size={96} /> : <Avatar src={this.props.fetchedUser.photo_200} size={96} />}
               {/* <Avatar src={this.props.fetchedUser.photo_200} size={96} /> */}
               <Header className='delete' mode="primary" aside={
-                <Icon16Clear onClick={this.clearAll} data-to='acquaintance'/>
+                <Icon16Clear onClick={this.clearAll} data-to='acquaintance' />
               } >{this.props.fetchedUser.id == 393320417 ? 'Арбуз Бодур' : `${this.props.fetchedUser.first_name} ${this.props.fetchedUser.last_name}`}</Header>
               <Text style={{ color: 'var(--text_secondary)' }}>{this.props.fetchedUser.city && this.props.fetchedUser.city.title ? this.props.fetchedUser.city.title : ''}</Text>
-              <Text style={{textAlign:'center', marginTop: 10}}>{this.state.specialty}</Text>
+              <Text style={{ textAlign: 'center', marginTop: 10 }}>{this.state.specialty}</Text>
             </Gradient>
           }
         </Div>
-        <Group className="group-about" style={{marginBlockEnd: 70}}>
-          <Header mode="primary" aside={<Icon20Write onClick={this.props.go} data-to='edit'/>}>Обо мне</Header>
+        <Group className="group-about" style={{ marginBlockEnd: 70 }}>
+          <Header mode="primary" aside={<Icon20Write onClick={this.props.go} data-to='edit' />}>Обо мне</Header>
           <Header mode="secondary" aside={<Text>{this.state.level}</Text>}>Ступень:</Header>
           <Header mode="secondary" aside={<Text>{this.state.group}</Text>}>Группа:</Header>
           <Header mode="secondary" aside={<Text>{this.state.year}</Text>}>Курс:</Header>

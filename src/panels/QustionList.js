@@ -15,30 +15,28 @@ import { PanelHeaderBack } from '@vkontakte/vkui';
 
 import RenderQuestions from '../components/RenderQuestions';
 
-class QuestionsList extends Component {
-    render() {
-        return (
-            <Panel id={this.props.id}>
-                <PanelHeader left={<PanelHeaderBack onClick={this.props.back}/>}>PolyApp</PanelHeader>
-                <Group>
-                    <RenderQuestions go={this.props.go} updateQuestion={this.props.updateQuestion} category={this.props.category}/>
-                </Group>
-                <FixedLayout filled vertical="bottom">
-                    <Tabbar className='tabbar-padding'>
-                        <TabbarItem selected text="Вопросы" onClick={this.props.go} data-to="questions">
-                            <Icon28InfoCircleOutline />
-                        </TabbarItem>
-                        <TabbarItem text="Календарь" onClick={this.props.go} data-to="calendar">
-                            <Icon28CalendarOutline />
-                        </TabbarItem>
-                        <TabbarItem text="Профиль" onClick={this.props.go} data-to="home">
-                            <Icon28UserCircleOutline />
-                        </TabbarItem>
-                    </Tabbar>
-                </FixedLayout>
-            </Panel>
-        )
-    }
+const QuestionsList = ({ id, go, back, updateQuestion, category }) => {
+    return (
+        <Panel id={id}>
+            <PanelHeader left={<PanelHeaderBack onClick={back} />}>PolyApp</PanelHeader>
+            <Group>
+                <RenderQuestions go={go} updateQuestion={updateQuestion} category={category} />
+            </Group>
+            <FixedLayout filled vertical="bottom">
+                <Tabbar className='tabbar-padding'>
+                    <TabbarItem selected text="Вопросы" onClick={go} data-to="questions">
+                        <Icon28InfoCircleOutline />
+                    </TabbarItem>
+                    <TabbarItem text="Календарь" onClick={go} data-to="calendar">
+                        <Icon28CalendarOutline />
+                    </TabbarItem>
+                    <TabbarItem text="Профиль" onClick={go} data-to="home">
+                        <Icon28UserCircleOutline />
+                    </TabbarItem>
+                </Tabbar>
+            </FixedLayout>
+        </Panel>
+    )
 }
 
 QuestionsList.propTypes = {

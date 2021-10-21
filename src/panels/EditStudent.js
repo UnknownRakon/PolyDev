@@ -16,6 +16,7 @@ import 'jquery-mask-plugin/dist/jquery.mask.min.js';
 
 import '../css/AboutStudents.css'
 
+// СУПЕР ГАВНА КЛАССЫ
 
 class EditStudent extends Component {
     constructor(props) {
