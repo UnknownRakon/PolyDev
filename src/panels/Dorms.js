@@ -12,12 +12,12 @@ import { Icon16New } from '@vkontakte/icons';
 
 import '../css/dorms.css';
 
-const Dorms = ({ id, back, setdorm }) => {
+const Dorms = ({ id, back, setdorm, go }) => {
 
   const dormsInfo = require('../json/dorms.json');
 
-  const handeDormClick = (id) => (event) => {
-    setdorm(id);
+  const handeDormClick = (index) => (event) => {
+    setdorm(index);
     go(event)
   }
   const createMarkup = (text) => {
