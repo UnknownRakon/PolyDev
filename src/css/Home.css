@@ -1,19 +1,19 @@
-.group-about{
-    padding-left: 20px;
-    padding-right: 20px;
+.group-about {
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.tabbar-padding{
-    padding: 5px 0;
+.tabbar-padding {
+  padding: 5px 0;
 }
-.avatar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px 0 0 0;
-    background: none !important;
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0 0 0;
+  background: none !important;
 }
-.delete:nth-child(2) div svg{
-    padding-top: 2.5px;
+.delete:nth-child(2) div svg {
+  padding-top: 2.5px;
 }

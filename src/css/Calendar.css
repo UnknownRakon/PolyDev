@@ -1,22 +1,22 @@
-.calendar{
-    margin: 0 auto;
-    background-color: #d3d4d6 !important;
-    color: #030303 !important;
-    border:none !important;
-    outline: none !important;
-    border-radius: 5px;
+.calendar {
+  margin: 0 auto;
+  background-color: #d3d4d6 !important;
+  color: #030303 !important;
+  border: none !important;
+  outline: none !important;
+  border-radius: 5px;
 }
-.calendar *:focus{
-    background-color: inherit !important;
-    color: inherit !important;
+.calendar *:focus {
+  background-color: inherit !important;
+  color: inherit !important;
 }
-.calendar div div div div div *:hover{
-    background-color: #899593 !important;
-    color: #2c3632;
+.calendar div div div div div *:hover {
+  background-color: #899593 !important;
+  color: #2c3632;
 }
 
-
-.highlight, .highlight:focus{
-    background-color: #2c3632 !important;
-    color: #899593 !important;
+.highlight,
+.highlight:focus {
+  background-color: #2c3632 !important;
+  color: #899593 !important;
 }
