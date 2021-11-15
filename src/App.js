@@ -15,11 +15,8 @@ import {
 } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 
-// import Start from './panels/Start';
 import Acquaintance from "./panels/Acquaintance";
-// import StudyForm from './panels/StydyForm';
-// import Degree from './panels/Degree';
-import PickDirections from "./panels/PickDirections_v2";
+import PickDirections from "./panels/PickDirections";
 import AboutDirection from "./panels/AboutDirection";
 import ChoosedDirectionsInfo from "./panels/ChoosedDirectionsInfo";
 import AboutStudent from "./panels/AboutStudent";
@@ -159,7 +156,6 @@ const App = () => {
     <AdaptivityProvider>
       <AppRoot>
         <View activePanel={activePanel} popout={popout} modal={modal}>
-          {/* <Start id='start' go={go} /> */}
           <Acquaintance
             setActiveModal={setActiveModal}
             fetchedUser={fetchedUser}
@@ -168,10 +164,8 @@ const App = () => {
             id="acquaintance"
             go={go}
           />
-          {/* <StudyForm id='study-form' go={go} />
-					<Degree id='degree' go={go}/> */}
           <PickDirections back={back} id="pick-directions" go={go} />
-          <AboutDirection back={back} id="about-direction" go={go} />
+          <AboutDirection id="about-direction" go={go} />
           <ChoosedDirectionsInfo
             back={back}
             id="choosed-directions-info"

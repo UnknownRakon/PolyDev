@@ -13,17 +13,27 @@ import { PanelHeaderBack } from "@vkontakte/vkui";
 
 import "../css/aboutDirection.css";
 
-const AboutDirection = ({ id, back }) => {
-  const [interestedDirection, setDirection] = useState("");
+const AboutDirection = ({ id, go }) => {
+  const [interestedDirection, setDirection] = useState({
+    "name": String,
+    "code": String,
+    "years": String,
+    "budget": String,
+    "commerce": String,
+    "details": String,
+    "description": String,
+    "plan": String,
+    "map": String
+  });
   useEffect(() => {
     setDirection(JSON.parse(localStorage.getItem("interestedDirection")));
-  }, [interestedDirection]);
+  }, []);
   const createMarkup = (text) => {
     return { __html: text };
   };
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack onClick={back} />}>
+      <PanelHeader left={<PanelHeaderBack onClick={go} data-to='pick-directions' />}>
         PolyApp
       </PanelHeader>
       <Title
@@ -38,7 +48,7 @@ const AboutDirection = ({ id, back }) => {
           textAlign: "center",
         }}
       >
-        {interestedDirection["Название направления"]}
+        {interestedDirection.name}
       </Title>
       <Title
         level="2"
@@ -56,26 +66,26 @@ const AboutDirection = ({ id, back }) => {
         о направлении:
       </Title>
       <List>
-        <Cell indicator={interestedDirection["Код направления"]}>Код</Cell>
-        <Cell indicator={interestedDirection["Срок обучения"]}>
+        <Cell indicator={interestedDirection.code}>Код</Cell>
+        <Cell indicator={interestedDirection.years}>
           Срок обучения
         </Cell>
-        <Cell indicator={interestedDirection["Бюджетных мест"]}>
+        <Cell indicator={interestedDirection.budget}>
           Бюджетных мест
         </Cell>
-        <Cell indicator={interestedDirection["Платных мест"]}>
+        <Cell indicator={interestedDirection.commerce}>
           Платных мест
         </Cell>
       </List>
       <Text
         weight="medium"
         style={{ marginBottom: 0, padding: 16, paddingBottom: 0 }}
-        dangerouslySetInnerHTML={createMarkup(interestedDirection["Описание"])}
+        dangerouslySetInnerHTML={createMarkup(interestedDirection.description)}
       ></Text>
       <Div style={{ paddingBlockEnd: 0, paddingBlockStart: 0 }}>
         <Link
           className="link-instruction"
-          href={interestedDirection["Учебный план"]}
+          href={interestedDirection.plan}
           target="_blank"
         >
           Учебный план
@@ -86,7 +96,7 @@ const AboutDirection = ({ id, back }) => {
       >
         <Link
           className="link-instruction"
-          href={interestedDirection["Карта направления"]}
+          href={interestedDirection.map}
           target="_blank"
         >
           Карта направления
@@ -114,7 +124,7 @@ const AboutDirection = ({ id, back }) => {
               alignItems: "center",
               fontWeight: "500",
             }}
-            href={interestedDirection["Подробнее"]}
+            href={interestedDirection.details}
             target="_blank"
           >
             {" "}

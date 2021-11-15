@@ -10,7 +10,7 @@ import "../css/PickDirections_v2.css";
 import Title from "@vkontakte/vkui/dist/components/Typography/Title/Title";
 import Text from "@vkontakte/vkui/dist/components/Typography/Text/Text";
 
-const ChoosedDirectionsInfo = ({ id, go, back }) => {
+const ChoosedDirectionsInfo = ({ id, go}) => {
   const [messageDirectionsArray, setArray] = useState([]);
   const requiredPoint = {
     'Математика': "39",
@@ -19,12 +19,13 @@ const ChoosedDirectionsInfo = ({ id, go, back }) => {
   };
 
   useEffect(() => {
-    setArray(localStorage.getItem("choosedGroups").split(","));
+    let arr = localStorage.getItem("selectedGroups")
+    setArray(JSON.parse(arr));
   }, [id]);
 
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack onClick={back} />}>
+      <PanelHeader left={<PanelHeaderBack onClick={go} data-to='pick-directions'/>}>
         PolyApp
       </PanelHeader>
       <Title className="choosedDirectionInfo_title">
