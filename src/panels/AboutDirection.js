@@ -13,7 +13,9 @@ import { PanelHeaderBack } from '@vkontakte/vkui';
 
 import '../css/aboutDirection.css';
 
-const AboutDirection = ({ id, go }) => {
+import router from '../router';
+
+const AboutDirection = ({ id }) => {
     const [interestedDirection, setDirection] = useState({
         name: String,
         code: String,
@@ -34,9 +36,7 @@ const AboutDirection = ({ id, go }) => {
     return (
         <Panel id={id}>
             <PanelHeader
-                left={
-                    <PanelHeaderBack onClick={go} data-to="pick-directions" />
-                }
+                left={<PanelHeaderBack onClick={() => router.back()} />}
             >
                 PolyApp
             </PanelHeader>

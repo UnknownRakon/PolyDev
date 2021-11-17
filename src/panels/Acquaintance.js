@@ -20,13 +20,13 @@ import { Icon20QuestionOutline } from '@vkontakte/icons';
 
 import '../css/Radio.css';
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
-import { Title } from '@vkontakte/vkui';
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
+import router from '../router';
+
 const Acquaintance = ({
     id,
-    go,
     fetchedUser,
     setActiveModal,
     MODAL_CARD_ONE,
@@ -42,10 +42,10 @@ const Acquaintance = ({
         localStorage.setItem('selectedGroups', []);
     });
 
-    const handleNextClick = (event) => {
+    const handleNextClick = () => {
         localStorage.setItem('wantStudyForm', wantStudyForm);
         localStorage.setItem('wantStudyLevel', wantStudyLevel);
-        go(event);
+        router.go(want ? 'pick-directions' : 'student-form-filling');
     };
     const scrollToSection = () => {
         setWant(true);
@@ -218,12 +218,7 @@ const Acquaintance = ({
                             stretched
                             size="l"
                             mode="primary"
-                            onClick={(event) => handleNextClick(event)}
-                            data-to={
-                                want
-                                    ? 'pick-directions'
-                                    : 'student-form-filling'
-                            }
+                            onClick={() => handleNextClick()}
                         >
                             Далее
                         </Button>
@@ -232,19 +227,6 @@ const Acquaintance = ({
             </Group>
         </Panel>
     );
-};
-
-Acquaintance.propTypes = {
-    id: PropTypes.string.isRequired,
-    go: PropTypes.func.isRequired,
-    fetchedUser: PropTypes.shape({
-        photo_200: PropTypes.string,
-        first_name: PropTypes.string,
-        last_name: PropTypes.string,
-        city: PropTypes.shape({
-            title: PropTypes.string,
-        }),
-    }),
 };
 
 export default Acquaintance;

@@ -16,7 +16,9 @@ import { PanelHeaderBack, Group } from '@vkontakte/vkui';
 
 const newDirections = require('../json/new_directions.json');
 
-const PickDirections = ({ go, id, back }) => {
+import router from '../router';
+
+const PickDirections = ({ id }) => {
     const [counter, setCounter] = useState(5);
     const initialArray = [];
     const [selectedGroups, setSelectedGroups] = useState(
@@ -27,7 +29,7 @@ const PickDirections = ({ go, id, back }) => {
     const handleInfoClick = (value) => (event) => {
         if (value) {
             localStorage.setItem('interestedDirection', JSON.stringify(value));
-            go(event);
+            router.go('about-direction');
         }
     };
     useEffect(() => {
@@ -75,7 +77,9 @@ const PickDirections = ({ go, id, back }) => {
 
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack onClick={back} />}>
+            <PanelHeader
+                left={<PanelHeaderBack onClick={() => router.back()} />}
+            >
                 PolyApp
             </PanelHeader>
             <Title className="pickDirections__title">
@@ -154,7 +158,6 @@ const PickDirections = ({ go, id, back }) => {
                                                 onClick={handleInfoClick(
                                                     direction
                                                 )}
-                                                data-to="about-direction"
                                             />
                                         </Div>
                                     );
@@ -174,8 +177,7 @@ const PickDirections = ({ go, id, back }) => {
                         stretched
                         size="l"
                         mode="primary"
-                        onClick={go}
-                        data-to="choosed-directions-info"
+                        onClick={() => router.go('choosed-directions-info')}
                         disabled={counter < 5 && counter >= 0 ? false : true}
                     >
                         Продолжить

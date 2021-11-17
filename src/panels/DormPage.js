@@ -12,7 +12,7 @@ import { Gallery, Group, PanelHeaderBack } from '@vkontakte/vkui';
 let dorms = require('../json/dorms.json');
 import '../css/dorm.css';
 
-const DormPage = ({ id, back, dorm, setdorm }) => {
+const DormPage = ({ id, dorm, setdorm }) => {
     const createMarkup = (text) => {
         return { __html: text };
     };
@@ -24,7 +24,9 @@ const DormPage = ({ id, back, dorm, setdorm }) => {
     };
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack onClick={back} />}>
+            <PanelHeader
+                left={<PanelHeaderBack onClick={() => router.back()} />}
+            >
                 PolyApp
             </PanelHeader>
             <Title level="1" weight="regular" className="dorm__title">
@@ -80,7 +82,6 @@ const DormPage = ({ id, back, dorm, setdorm }) => {
                         style={{ width: '40%' }}
                         size="l"
                         onClick={goNextPageHandler}
-                        data-to="choosed-directions-info"
                     >
                         Следующее
                     </Button>

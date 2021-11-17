@@ -12,12 +12,14 @@ import { Icon16New } from '@vkontakte/icons';
 
 import '../css/dorms.css';
 
-const Dorms = ({ id, back, setdorm, go }) => {
+import router from '../router';
+
+const Dorms = ({ id, setdorm }) => {
     const dormsInfo = require('../json/dorms.json');
 
-    const handeDormClick = (index) => (event) => {
+    const handeDormClick = (index) => {
         setdorm(index);
-        go(event);
+        router.go('dorm-page');
     };
     const createMarkup = (text) => {
         return { __html: text };
@@ -25,7 +27,9 @@ const Dorms = ({ id, back, setdorm, go }) => {
 
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack onClick={back} />}>
+            <PanelHeader
+                left={<PanelHeaderBack onClick={() => router.back()} />}
+            >
                 PolyApp
             </PanelHeader>
             <Group>
@@ -57,7 +61,6 @@ const Dorms = ({ id, back, setdorm, go }) => {
                                 key={index}
                                 className="dorms__card"
                                 onClick={handeDormClick(index)}
-                                data-to="dorm-page"
                             >
                                 <div
                                     className="dorms__card__photo"

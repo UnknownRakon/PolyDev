@@ -20,15 +20,13 @@ import { Icon28LightbulbStarOutline } from '@vkontakte/icons';
 import { Link } from '@vkontakte/vkui';
 
 import '../css/question.css';
-const Instruction = ({ id, category, question, go, back }) => {
+const Instruction = ({ id, category, question, go }) => {
     const createMarkup = (text) => {
         return { __html: text };
     };
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack onClick={back} />}>
-                PolyApp
-            </PanelHeader>
+            <PanelHeader left={<PanelHeaderBack />}>PolyApp</PanelHeader>
             <Div>
                 {category == 'dorms' ? (
                     <Icon36HomeOutline className="instruction__icon" />

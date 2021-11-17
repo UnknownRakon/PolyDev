@@ -18,6 +18,8 @@ import 'jquery-mask-plugin/dist/jquery.mask.min.js';
 import '../css/AboutStudents.css';
 const newDirections = require('../json/new_directions.json');
 
+import router from '../router';
+
 // СУПЕР ГАВНА КЛАССЫ
 
 class AboutStudent extends Component {
@@ -134,7 +136,7 @@ class AboutStudent extends Component {
         return (
             <Panel id={this.props.id}>
                 <PanelHeader
-                    left={<PanelHeaderBack onClick={this.props.back} />}
+                    left={<PanelHeaderBack onClick={() => router.back()} />}
                 >
                     PolyApp
                 </PanelHeader>
@@ -214,7 +216,7 @@ class AboutStudent extends Component {
                           (directions, index) => {
                               return (
                                   <FormItem key={index}>
-                                      {directions[Object.keys(directions)].map(
+                                      {directions.directions.map(
                                           (direction, idx) => {
                                               return (
                                                   <Radio
@@ -333,9 +335,10 @@ class AboutStudent extends Component {
                             stretched
                             size="l"
                             mode="primary"
-                            disabled={!this.state.changed}
-                            onClick={(this.toStorage(), this.props.go)}
-                            data-to="home"
+                            // disabled={!this.state.changed}
+                            onClick={
+                                (this.toStorage(), () => router.go('home'))
+                            }
                         >
                             Продолжить
                         </Button>

@@ -18,7 +18,9 @@ import { Icon20Write } from '@vkontakte/icons';
 import { Icon16Clear } from '@vkontakte/icons';
 import '../css/Home.css';
 
-const HomePage = ({ id, setActivePanel, fetchedUser, go }) => {
+import router from '../router';
+
+const HomePage = ({ id, setActivePanel, fetchedUser }) => {
     const [group, setGroup] = useState('');
     const [level, setLevel] = useState('');
     const [stud, setStud] = useState('');
@@ -49,28 +51,21 @@ const HomePage = ({ id, setActivePanel, fetchedUser, go }) => {
             <Div>
                 {fetchedUser && (
                     <Gradient className="avatar">
-                        {fetchedUser.id == 393320417 ? (
+                        {/* {fetchedUser.id == 393320417 ? (
                             <Avatar
                                 src="https://psv4.userapi.com/c536436/u136928687/docs/d36/8de1edaefd71/arbuz.png?extra=LBReun4rSK71aHwc6G-aSwQSLxgtbxO8YR8etgvaPobzBy55FKxWqj7mG9NsZSIX5JfTr75CVYWAgg0Ggd_zzKfEe1vHLXyHdnnIHy0zk0awc2z4He9YkaXkqHINT9rhAQ06VCOA0hFxRjWUNGcPV4k"
                                 size={96}
                             />
                         ) : (
                             <Avatar src={fetchedUser.photo_200} size={96} />
-                        )}
-                        {/* <Avatar src={fetchedUser.photo_200} size={96} /> */}
+                        )} */}
+                        <Avatar src={fetchedUser.photo_200} size={96} />
                         <Header
                             className="delete"
                             mode="primary"
-                            aside={
-                                <Icon16Clear
-                                    onClick={clearAll}
-                                    data-to="acquaintance"
-                                />
-                            }
+                            aside={<Icon16Clear onClick={clearAll} />}
                         >
-                            {fetchedUser.id == 393320417
-                                ? 'Арбуз Бодур'
-                                : `${fetchedUser.first_name} ${fetchedUser.last_name}`}
+                            {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
                         </Header>
                         <Text style={{ color: 'var(--text_secondary)' }}>
                             {fetchedUser.city && fetchedUser.city.title
@@ -86,7 +81,7 @@ const HomePage = ({ id, setActivePanel, fetchedUser, go }) => {
             <Group className="group-about" style={{ marginBlockEnd: 70 }}>
                 <Header
                     mode="primary"
-                    aside={<Icon20Write onClick={go} data-to="edit" />}
+                    aside={<Icon20Write onClick={() => router.go('edit')} />}
                 >
                     Обо мне
                 </Header>
@@ -117,13 +112,15 @@ const HomePage = ({ id, setActivePanel, fetchedUser, go }) => {
             </Group>
             <FixedLayout filled vertical="bottom">
                 <Tabbar className="tabbar-padding">
-                    <TabbarItem text="Вопросы" onClick={go} data-to="questions">
+                    <TabbarItem
+                        text="Вопросы"
+                        onClick={() => router.go('questions')}
+                    >
                         <Icon28InfoCircleOutline />
                     </TabbarItem>
                     <TabbarItem
                         text="Календарь"
-                        onClick={go}
-                        data-to="calendar"
+                        onClick={() => router.go('calendar')}
                     >
                         <Icon28CalendarOutline />
                     </TabbarItem>

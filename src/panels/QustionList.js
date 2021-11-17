@@ -15,12 +15,10 @@ import { PanelHeaderBack } from '@vkontakte/vkui';
 
 import RenderQuestions from '../components/RenderQuestions';
 
-const QuestionsList = ({ id, go, back, updateQuestion, category }) => {
+const QuestionsList = ({ id, go, updateQuestion, category }) => {
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack onClick={back} />}>
-                PolyApp
-            </PanelHeader>
+            <PanelHeader left={<PanelHeaderBack />}>PolyApp</PanelHeader>
             <Group>
                 <RenderQuestions
                     go={go}
@@ -52,13 +50,6 @@ const QuestionsList = ({ id, go, back, updateQuestion, category }) => {
             </FixedLayout>
         </Panel>
     );
-};
-
-QuestionsList.propTypes = {
-    id: PropTypes.string.isRequired,
-    go: PropTypes.func.isRequired,
-    category: PropTypes.string.isRequired,
-    updateQuestion: PropTypes.func.isRequired,
 };
 
 export default QuestionsList;

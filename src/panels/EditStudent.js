@@ -121,11 +121,7 @@ class EditStudent extends Component {
     render() {
         return (
             <Panel id={this.props.id}>
-                <PanelHeader
-                    left={<PanelHeaderBack onClick={this.props.back} />}
-                >
-                    PolyApp
-                </PanelHeader>
+                <PanelHeader left={<PanelHeaderBack />}>PolyApp</PanelHeader>
                 <FormItem top="Курс">
                     <Select
                         name="year"

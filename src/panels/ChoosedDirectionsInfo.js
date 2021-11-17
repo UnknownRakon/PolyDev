@@ -10,7 +10,9 @@ import '../css/PickDirections_v2.css';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
 
-const ChoosedDirectionsInfo = ({ id, go }) => {
+import router from '../router';
+
+const ChoosedDirectionsInfo = ({ id }) => {
     const [messageDirectionsArray, setArray] = useState([]);
     const requiredPoint = {
         Математика: '39',
@@ -26,9 +28,7 @@ const ChoosedDirectionsInfo = ({ id, go }) => {
     return (
         <Panel id={id}>
             <PanelHeader
-                left={
-                    <PanelHeaderBack onClick={go} data-to="pick-directions" />
-                }
+                left={<PanelHeaderBack onClick={() => router.back()} />}
             >
                 PolyApp
             </PanelHeader>
@@ -119,8 +119,7 @@ const ChoosedDirectionsInfo = ({ id, go }) => {
                         stretched
                         size="l"
                         mode="primary"
-                        onClick={go}
-                        data-to="dorms"
+                        onClick={() => router.go('dorms')}
                     >
                         Общежития
                     </Button>

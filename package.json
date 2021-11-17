@@ -14,13 +14,14 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "cross-env": "^5.2.0",
+    "cross-env": "^5.2.1",
     "gh-pages": "^3.1.0",
     "react-hot-loader": "^4.9.0",
     "react-scripts": "^4.0.1"
   },
   "dependencies": {
     "@vkontakte/icons": "^1.89.0",
+    "@vkontakte/router": "0.0.12",
     "@vkontakte/vk-bridge": "^2.4.1",
     "@vkontakte/vk-miniapps-deploy": "0.0.17",
     "@vkontakte/vkjs": "^0.21.0",
