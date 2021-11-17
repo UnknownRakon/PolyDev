@@ -25,8 +25,9 @@ import '../css/Calendar.css';
 import { object } from 'prop-types';
 
 import { getRandomInt } from '@vkontakte/vkjs';
+import router from '../router';
 
-const CalendarPanel = ({ fetchedUser, id, go }) => {
+const CalendarPanel = ({ fetchedUser, id }) => {
     const [notifies, setNotifies] = useState({});
     const [value, setValue] = useState('');
     const [text, setText] = useState('Нет напоминаний');
@@ -443,13 +444,19 @@ const CalendarPanel = ({ fetchedUser, id, go }) => {
             </Group>
             <FixedLayout filled vertical="bottom">
                 <Tabbar className="tabbar-padding">
-                    <TabbarItem text="Вопросы" onClick={go} data-to="questions">
+                    <TabbarItem
+                        text="Вопросы"
+                        onClick={() => router.go('questions')}
+                    >
                         <Icon28InfoCircleOutline />
                     </TabbarItem>
                     <TabbarItem text="Календарь" selected>
                         <Icon28CalendarOutline />
                     </TabbarItem>
-                    <TabbarItem text="Профиль" onClick={go} data-to="home">
+                    <TabbarItem
+                        text="Профиль"
+                        onClick={() => router.go('home')}
+                    >
                         <Icon28UserCircleOutline />
                     </TabbarItem>
                 </Tabbar>

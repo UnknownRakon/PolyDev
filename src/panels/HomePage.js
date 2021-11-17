@@ -40,10 +40,12 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
         setYear(localStorage.getItem('year'));
         setSpecialty(localStorage.getItem('specialty'));
         setDormnum(localStorage.getItem('dormnum'));
-    });
+        router.stop();
+        router.start();
+    }, []);
     const clearAll = () => {
         window.localStorage.clear();
-        setActivePanel('acquaintance');
+        router.go('acquaintance');
     };
     return (
         <Panel id={id}>

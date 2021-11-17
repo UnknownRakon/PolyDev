@@ -19,15 +19,16 @@ import { Icon56SchoolOutline } from '@vkontakte/icons';
 import { Icon28LightbulbStarOutline } from '@vkontakte/icons';
 
 import '../css/Questions.css';
+import router from '../router';
 
-const Questions = ({ id, go, updateData }) => {
+const Questions = ({ id, updateData }) => {
     useEffect(() => {
         localStorage.removeItem('category');
     }, [id]);
 
-    const onClick = (cat) => (event) => {
+    const onClick = (cat) => {
         updateData(cat);
-        go(event);
+        router.go('questions-list');
     };
     return (
         <Panel id={id}>
@@ -45,11 +46,7 @@ const Questions = ({ id, go, updateData }) => {
                     </Caption>
                 </Div>
                 <CardGrid size="m" style={{ marginBlockEnd: 70 }}>
-                    <Card
-                        className="card"
-                        onClick={onClick('dorms')}
-                        data-to="questions-list"
-                    >
+                    <Card className="card" onClick={() => onClick('dorms')}>
                         <Icon36HomeOutline className="icon" />
                         <Caption
                             level="1"
@@ -60,11 +57,7 @@ const Questions = ({ id, go, updateData }) => {
                             Общежития
                         </Caption>
                     </Card>
-                    <Card
-                        className="card"
-                        onClick={onClick('study')}
-                        data-to="questions-list"
-                    >
+                    <Card className="card" onClick={() => onClick('study')}>
                         <Icon28BookOutline className="icon" />
                         <Caption
                             level="1"
@@ -75,11 +68,7 @@ const Questions = ({ id, go, updateData }) => {
                             Учёба
                         </Caption>
                     </Card>
-                    <Card
-                        className="card"
-                        onClick={onClick('buildings')}
-                        data-to="questions-list"
-                    >
+                    <Card className="card" onClick={() => onClick('buildings')}>
                         <Icon56SchoolOutline className="icon" />
                         <Caption
                             level="1"
@@ -90,11 +79,7 @@ const Questions = ({ id, go, updateData }) => {
                             Корпуса
                         </Caption>
                     </Card>
-                    <Card
-                        className="card"
-                        onClick={onClick('PD')}
-                        data-to="questions-list"
-                    >
+                    <Card className="card" onClick={() => onClick('PD')}>
                         <Icon28LightbulbStarOutline className="icon" />
                         <Caption
                             level="1"
@@ -114,24 +99,20 @@ const Questions = ({ id, go, updateData }) => {
                     </TabbarItem>
                     <TabbarItem
                         text="Календарь"
-                        onClick={go}
-                        data-to="calendar"
+                        onClick={() => router.go('calendar')}
                     >
                         <Icon28CalendarOutline />
                     </TabbarItem>
-                    <TabbarItem text="Профиль" onClick={go} data-to="home">
+                    <TabbarItem
+                        text="Профиль"
+                        onClick={() => router.go('home')}
+                    >
                         <Icon28UserCircleOutline />
                     </TabbarItem>
                 </Tabbar>
             </FixedLayout>
         </Panel>
     );
-};
-
-Questions.propTypes = {
-    id: PropTypes.string.isRequired,
-    go: PropTypes.func.isRequired,
-    updateData: PropTypes.func.isRequired,
 };
 
 export default Questions;

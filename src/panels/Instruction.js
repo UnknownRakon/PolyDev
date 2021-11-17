@@ -20,13 +20,18 @@ import { Icon28LightbulbStarOutline } from '@vkontakte/icons';
 import { Link } from '@vkontakte/vkui';
 
 import '../css/question.css';
-const Instruction = ({ id, category, question, go }) => {
+import router from '../router';
+const Instruction = ({ id, category, question }) => {
     const createMarkup = (text) => {
         return { __html: text };
     };
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack />}>PolyApp</PanelHeader>
+            <PanelHeader
+                left={<PanelHeaderBack onClick={() => router.back()} />}
+            >
+                PolyApp
+            </PanelHeader>
             <Div>
                 {category == 'dorms' ? (
                     <Icon36HomeOutline className="instruction__icon" />
@@ -66,7 +71,7 @@ const Instruction = ({ id, category, question, go }) => {
                         Полезные ссылки
                     </Header>
                 ) : null}
-                {question.links !== 0 &&
+                {question.links.length !== 0 &&
                     question.links.map((link, index) => {
                         return (
                             <Div
@@ -92,19 +97,20 @@ const Instruction = ({ id, category, question, go }) => {
                     <TabbarItem
                         selected
                         text="Вопросы"
-                        onClick={go}
-                        data-to="questions"
+                        onClick={() => router.go('questions')}
                     >
                         <Icon28InfoCircleOutline />
                     </TabbarItem>
                     <TabbarItem
                         text="Календарь"
-                        onClick={go}
-                        data-to="calendar"
+                        onClick={() => router.go('calendar')}
                     >
                         <Icon28CalendarOutline />
                     </TabbarItem>
-                    <TabbarItem text="Профиль" onClick={go} data-to="home">
+                    <TabbarItem
+                        text="Профиль"
+                        onClick={() => router.go('home')}
+                    >
                         <Icon28UserCircleOutline />
                     </TabbarItem>
                 </Tabbar>

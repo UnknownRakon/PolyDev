@@ -13,6 +13,8 @@ import { PanelHeaderBack } from '@vkontakte/vkui';
 import $ from 'jquery';
 import 'jquery-mask-plugin/dist/jquery.mask.min.js';
 
+import router from '../router';
+
 import '../css/AboutStudents.css';
 
 // СУПЕР ГАВНА КЛАССЫ
@@ -106,7 +108,7 @@ class EditStudent extends Component {
                     this.state.dorm == 'No'),
         });
     };
-    toStorage = (event) => {
+    toStorage = () => {
         const { year, specialty, group, dorm, stud, prof, dormnum } =
             this.state;
         localStorage.setItem('year', year);
@@ -116,12 +118,16 @@ class EditStudent extends Component {
         localStorage.setItem('stud', stud);
         localStorage.setItem('prof', prof);
         localStorage.setItem('dormnum', dormnum);
-        this.props.setActivePanel(event.currentTarget.dataset.to);
+        router.go('home');
     };
     render() {
         return (
             <Panel id={this.props.id}>
-                <PanelHeader left={<PanelHeaderBack />}>PolyApp</PanelHeader>
+                <PanelHeader
+                    left={<PanelHeaderBack onClick={() => router.back()} />}
+                >
+                    PolyApp
+                </PanelHeader>
                 <FormItem top="Курс">
                     <Select
                         name="year"
@@ -280,7 +286,6 @@ class EditStudent extends Component {
                             mode="primary"
                             disabled={!this.state.changed}
                             onClick={this.toStorage}
-                            data-to="home"
                         >
                             Продолжить
                         </Button>

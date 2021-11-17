@@ -25,7 +25,7 @@ const routes = [
 ];
 
 const config = {
-    defaultRoute: localStorage.getItem('group') ? 'home' : 'acquaintance',
+    defaultRoute: localStorage.getItem('validation') ? 'home' : 'acquaintance',
 };
 
 const router = createNavigator(routes, config);

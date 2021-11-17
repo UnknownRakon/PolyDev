@@ -68,7 +68,7 @@ const App = () => {
             let routerStatePage = toState.page;
 
             let index = routerStatePage.indexOf('.');
-            if (index !== -1) {
+            if (index > -1) {
                 routerStatePage = routerStatePage.substring(0, index);
             }
 

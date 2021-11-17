@@ -5,25 +5,25 @@ import { Icon20HelpOutline } from '@vkontakte/icons';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
 
 import jsonData from '../json/Questions.json';
+import router from '../router';
 
-const renderQusstions = ({ go, updateQuestion, category }) => {
+const renderQusstions = ({ updateQuestion, category }) => {
     const [data, setData] = useState();
     useEffect(() => {
         setData(jsonData);
     }, []);
-    onClick = (unit) => (event) => {
+    const onClick = (unit) => {
         updateQuestion(unit);
-        go(event);
+        router.go('instruction');
     };
     return (
         <Div>
             {category == 'dorms' &&
-                data.length !== 0 &&
+                data !== undefined &&
                 data.dorms.map((unit, index) => {
                     return (
                         <Div
-                            onClick={this.onClick(unit)}
-                            data-to="instruction"
+                            onClick={() => onClick(unit)}
                             key={index}
                             style={{
                                 display: 'flex',
@@ -42,12 +42,11 @@ const renderQusstions = ({ go, updateQuestion, category }) => {
                     );
                 })}
             {category == 'study' &&
-                data.length !== 0 &&
+                data !== undefined &&
                 data.study.map((unit, index) => {
                     return (
                         <Div
-                            onClick={this.onClick(unit)}
-                            data-to="instruction"
+                            onClick={() => onClick(unit)}
                             key={index}
                             style={{
                                 display: 'flex',
@@ -66,12 +65,11 @@ const renderQusstions = ({ go, updateQuestion, category }) => {
                     );
                 })}
             {category == 'buildings' &&
-                data.length !== 0 &&
+                data !== undefined &&
                 data.buildings.map((unit, index) => {
                     return (
                         <Div
-                            onClick={this.onClick(unit)}
-                            data-to="instruction"
+                            onClick={() => onClick(unit)}
                             key={index}
                             style={{
                                 display: 'flex',
@@ -90,12 +88,11 @@ const renderQusstions = ({ go, updateQuestion, category }) => {
                     );
                 })}
             {category == 'PD' &&
-                data.length !== 0 &&
+                data !== undefined &&
                 data.pd.map((unit, index) => {
                     return (
                         <Div
-                            onClick={this.onClick(unit)}
-                            data-to="instruction"
+                            onClick={() => onClick(unit)}
                             key={index}
                             style={{
                                 display: 'flex',

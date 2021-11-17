@@ -14,14 +14,18 @@ import { Icon28InfoCircleOutline } from '@vkontakte/icons';
 import { PanelHeaderBack } from '@vkontakte/vkui';
 
 import RenderQuestions from '../components/RenderQuestions';
+import router from '../router';
 
-const QuestionsList = ({ id, go, updateQuestion, category }) => {
+const QuestionsList = ({ id, updateQuestion, category }) => {
     return (
         <Panel id={id}>
-            <PanelHeader left={<PanelHeaderBack />}>PolyApp</PanelHeader>
+            <PanelHeader
+                left={<PanelHeaderBack onClick={() => router.back()} />}
+            >
+                PolyApp
+            </PanelHeader>
             <Group>
                 <RenderQuestions
-                    go={go}
                     updateQuestion={updateQuestion}
                     category={category}
                 />
@@ -31,19 +35,20 @@ const QuestionsList = ({ id, go, updateQuestion, category }) => {
                     <TabbarItem
                         selected
                         text="Вопросы"
-                        onClick={go}
-                        data-to="questions"
+                        onClick={() => router.go('questions')}
                     >
                         <Icon28InfoCircleOutline />
                     </TabbarItem>
                     <TabbarItem
                         text="Календарь"
-                        onClick={go}
-                        data-to="calendar"
+                        onClick={() => router.go('calendar')}
                     >
                         <Icon28CalendarOutline />
                     </TabbarItem>
-                    <TabbarItem text="Профиль" onClick={go} data-to="home">
+                    <TabbarItem
+                        text="Профиль"
+                        onClick={() => router.go('home')}
+                    >
                         <Icon28UserCircleOutline />
                     </TabbarItem>
                 </Tabbar>
