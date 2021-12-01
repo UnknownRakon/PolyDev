@@ -29,7 +29,7 @@ const AboutStudent = ({ id }) => {
     const [prof, setProf] = useState('');
     const [dormnum, setDormnum] = useState('');
 
-    const toStorage = async () => {
+    const toStorage = () => {
         localStorage.setItem('level', level);
         localStorage.setItem('year', year);
         localStorage.setItem('specialty', specialty);
