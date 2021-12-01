@@ -18,7 +18,7 @@ import Acquaintance from './panels/Acquaintance';
 import PickDirections from './panels/PickDirections';
 import AboutDirection from './panels/AboutDirection';
 import ChoosedDirectionsInfo from './panels/ChoosedDirectionsInfo';
-import AboutStudent from './panels/AboutStudent';
+import AboutStudent from './panels/AboutStudent-demo';
 import HomePage from './panels/HomePage';
 import Questions from './panels/Questions';
 import QuestionsList from './panels/QustionList';

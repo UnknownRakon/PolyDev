@@ -59,11 +59,6 @@ class AboutStudent extends Component {
                 this.validateField(name, value);
             }
         );
-        // if (((this.state.year !== '') || (name == 'year')) && ((this.state.specialty !== '') || (name == 'specialty')) && ((this.state.group !== '') || (name == 'group')) && ((this.state.dorm !== '') || (name == 'dorm'))) {
-        //     this.setState({
-        //         changed: true
-        //     });
-        // };
     }
     validateField = (fieldName, value) => {
         let groupValid = this.state.groupValid;
