@@ -29,11 +29,7 @@ const AboutStudent = ({ id }) => {
     const [prof, setProf] = useState('');
     const [dormnum, setDormnum] = useState('');
 
-    useEffect(() => {
-        localStorage.clear();
-    });
-
-    const toStorage = () => {
+    const toStorage = async () => {
         localStorage.setItem('level', level);
         localStorage.setItem('year', year);
         localStorage.setItem('specialty', specialty);
@@ -42,6 +38,7 @@ const AboutStudent = ({ id }) => {
         localStorage.setItem('stud', stud);
         localStorage.setItem('prof', prof);
         localStorage.setItem('dormnum', dormnum);
+        router.go('home');
     };
 
     return (
@@ -230,7 +227,17 @@ const AboutStudent = ({ id }) => {
                         stretched
                         size="l"
                         mode="primary"
-                        onClick={(toStorage(), () => router.go('home'))}
+                        disabled={
+                            level == '' ||
+                            year == '' ||
+                            specialty == '' ||
+                            group == '' ||
+                            dorm == '' ||
+                            (dorm == 'Yes' && dormnum == '')
+                                ? true
+                                : false
+                        }
+                        onClick={() => toStorage()}
                     >
                         Продолжить
                     </Button>

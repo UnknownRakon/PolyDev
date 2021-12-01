@@ -53,14 +53,6 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
             <Div>
                 {fetchedUser && (
                     <Gradient className="avatar">
-                        {/* {fetchedUser.id == 393320417 ? (
-                            <Avatar
-                                src="https://psv4.userapi.com/c536436/u136928687/docs/d36/8de1edaefd71/arbuz.png?extra=LBReun4rSK71aHwc6G-aSwQSLxgtbxO8YR8etgvaPobzBy55FKxWqj7mG9NsZSIX5JfTr75CVYWAgg0Ggd_zzKfEe1vHLXyHdnnIHy0zk0awc2z4He9YkaXkqHINT9rhAQ06VCOA0hFxRjWUNGcPV4k"
-                                size={96}
-                            />
-                        ) : (
-                            <Avatar src={fetchedUser.photo_200} size={96} />
-                        )} */}
                         <Avatar src={fetchedUser.photo_200} size={96} />
                         <Header
                             className="delete"
