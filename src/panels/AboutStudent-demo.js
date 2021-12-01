@@ -197,25 +197,31 @@ const AboutStudent = ({ id }) => {
                 </FormItem>
             ) : null}
             <FormItem top="Номер студенческого(необязательно)">
-                <Input
+                <InputMask
+                    mask="9999-9999"
                     type="text"
                     name="stud"
                     value={stud}
                     onChange={(event) => setStud(event.target.value)}
                     placeholder="0000-0000"
-                />
+                >
+                    {(inputProps) => <Input {...inputProps} />}
+                </InputMask>
             </FormItem>
             <FormItem
                 top="Номер профбилета(необязательно)"
                 style={{ marginBlockEnd: 70, writingMode: 'horizontal-tb' }}
             >
-                <Input
+                <InputMask
+                    mask="9999999999999999"
                     type="text"
                     name="prof"
                     value={prof}
                     onChange={(event) => setProf(event.target.value)}
                     placeholder="0000000000000000"
-                />
+                >
+                    {(inputProps) => <Input {...inputProps} />}
+                </InputMask>
             </FormItem>
             <FixedLayout filled vertical="bottom">
                 <Div>
