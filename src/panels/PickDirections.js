@@ -11,7 +11,7 @@ import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import { Icon20Info } from '@vkontakte/icons';
-import '../css/PickDirections_v2.css';
+import * as styles from '../css/PickDirections.module.css';
 import { PanelHeaderBack, Group } from '@vkontakte/vkui';
 
 const newDirections = require('../json/new_directions.json');
@@ -82,7 +82,7 @@ const PickDirections = ({ id }) => {
             >
                 PolyApp
             </PanelHeader>
-            <Title className="pickDirections__title">
+            <Title className={styles.pickDirections__title}>
                 Для{' '}
                 {localStorage.getItem('wantStudyForm') == 'Очная'
                     ? 'очной формы обучения'
@@ -100,7 +100,7 @@ const PickDirections = ({ id }) => {
             </Title>
             <Div style={{ marginLeft: 'auto' }}>
                 <List>
-                    <Div className="pickDirection__counter">
+                    <Div className={styles.pickDirection__counter}>
                         Доступно для выбора
                         <Counter className="pickDirection__counter__num">
                             {counter >= 0 ? counter : 0}
@@ -108,12 +108,12 @@ const PickDirections = ({ id }) => {
                     </Div>
                 </List>
             </Div>
-            <Div className="pickDirections__fit">ФИТ</Div>
+            <Div className={styles.pickDirections__fit}>ФИТ</Div>
             {newDirections[localStorage.getItem('wantStudyForm')][
                 localStorage.getItem('wantStudyLevel')
             ].map((faculty, index) => {
                 return (
-                    <Div key={index} className="pickDirections__direction">
+                    <Div key={index} className={styles.pickDirections__direction}>
                         <Title
                             style={{
                                 marginLeft: 16,
@@ -169,7 +169,7 @@ const PickDirections = ({ id }) => {
             })}
             <FixedLayout
                 filled
-                className="pickDirections__fixed"
+                className={styles.pickDirections__fixed}
                 vertical="bottom"
             >
                 <Div>

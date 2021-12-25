@@ -14,7 +14,7 @@ import Radio from '@vkontakte/vkui/dist/components/Radio/Radio';
 
 import InputMask from 'react-input-mask';
 
-import '../css/AboutStudents.css';
+import * as styles from '../css/AboutStudent.module.css';
 const newDirections = require('../json/new_directions.json');
 
 import router from '../router';

@@ -13,6 +13,7 @@ import { Icon28CalendarOutline } from '@vkontakte/icons';
 import { Icon28InfoCircleOutline } from '@vkontakte/icons';
 import { PanelHeaderBack } from '@vkontakte/vkui';
 
+import * as styles from '../css/QuestionsList.module.css';
 import RenderQuestions from '../components/RenderQuestions';
 import router from '../router';
 
@@ -31,7 +32,7 @@ const QuestionsList = ({ id, updateQuestion, category }) => {
                 />
             </Group>
             <FixedLayout filled vertical="bottom">
-                <Tabbar className="tabbar-padding">
+                <Tabbar className={styles.tabbarPadding}>
                     <TabbarItem
                         selected
                         text="Вопросы"

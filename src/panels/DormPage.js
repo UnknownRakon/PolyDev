@@ -5,12 +5,11 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import '../css/PickDirections_v2.css';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
 import { Gallery, Group, PanelHeaderBack } from '@vkontakte/vkui';
 let dorms = require('../json/dorms.json');
-import '../css/dorm.css';
+import * as styles from '../css/DormPage.module.css';
 
 const DormPage = ({ id, dorm, setdorm }) => {
     const createMarkup = (text) => {
@@ -29,7 +28,7 @@ const DormPage = ({ id, dorm, setdorm }) => {
             >
                 PolyApp
             </PanelHeader>
-            <Title level="1" weight="regular" className="dorm__title">
+            <Title level="1" weight="regular" className={styles.dorm__title}>
                 Общежитие {dorms.Общежития[`${dorm}`].Номер}{' '}
             </Title>
             <Group>

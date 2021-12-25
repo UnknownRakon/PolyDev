@@ -21,14 +21,14 @@ import ChoosedDirectionsInfo from './panels/ChoosedDirectionsInfo';
 import AboutStudent from './panels/AboutStudent';
 import HomePage from './panels/HomePage';
 import Questions from './panels/Questions';
-import QuestionsList from './panels/QustionList';
+import QuestionsList from './panels/QuestionsList';
 import Instruction from './panels/Instruction';
 import CalendarPanel from './panels/Calendar';
 import Dorms from './panels/Dorms';
 import DormPage from './panels/DormPage';
 import EditStudent from './panels/EditStudent';
 import './css/gilroy.css';
-import './css/main.css';
+import * as styles from './css/App.module.css';
 import { Icon56QuestionOutline } from '@vkontakte/icons';
 import { Icon56GhostOutline } from '@vkontakte/icons';
 

@@ -18,7 +18,8 @@ import { Icon28BookOutline } from '@vkontakte/icons';
 import { Icon56SchoolOutline } from '@vkontakte/icons';
 import { Icon28LightbulbStarOutline } from '@vkontakte/icons';
 
-import '../css/Questions.css';
+import * as styles from '../css/Questions.module.css';
+import * as stylesRadio from '../css/Radio.module.css';
 import router from '../router';
 
 const Questions = ({ id, updateData }) => {
@@ -37,7 +38,7 @@ const Questions = ({ id, updateData }) => {
                 <Div>
                     <Caption
                         style={{ fontSize: 18 }}
-                        className="captionCaps"
+                        className={stylesRadio.captionCaps}
                         level="1"
                         weight="semibold"
                         caps
@@ -46,46 +47,50 @@ const Questions = ({ id, updateData }) => {
                     </Caption>
                 </Div>
                 <CardGrid size="m" style={{ marginBlockEnd: 70 }}>
-                    <Card className="card" onClick={() => onClick('dorms')}>
-                        <Icon36HomeOutline className="icon" />
+                    <Card className={styles.card} onClick={() => onClick('dorms')}>
+                        <Icon36HomeOutline className={styles.icon} width={56} height={56}/>
                         <Caption
                             level="1"
                             weight="semibold"
                             caps
                             style={{ marginTop: 10, fontSize: 18 }}
+                            className={styles.caption}
                         >
                             Общежития
                         </Caption>
                     </Card>
-                    <Card className="card" onClick={() => onClick('study')}>
-                        <Icon28BookOutline className="icon" />
+                    <Card className={styles.card} onClick={() => onClick('study')}>
+                        <Icon28BookOutline className={styles.icon} width={56} height={56}/>
                         <Caption
                             level="1"
                             weight="semibold"
                             caps
                             style={{ marginTop: 10, fontSize: 18 }}
+                            className={styles.caption}
                         >
                             Учёба
                         </Caption>
                     </Card>
-                    <Card className="card" onClick={() => onClick('buildings')}>
-                        <Icon56SchoolOutline className="icon" />
+                    <Card className={styles.card} onClick={() => onClick('buildings')}>
+                        <Icon56SchoolOutline className={styles.icon} width={56} height={56}/>
                         <Caption
                             level="1"
                             weight="semibold"
                             caps
                             style={{ marginTop: 10, fontSize: 18 }}
+                            className={styles.caption}
                         >
                             Корпуса
                         </Caption>
                     </Card>
-                    <Card className="card" onClick={() => onClick('PD')}>
-                        <Icon28LightbulbStarOutline className="icon" />
+                    <Card className={styles.card} onClick={() => onClick('PD')}>
+                        <Icon28LightbulbStarOutline className={styles.icon} width={56} height={56}/>
                         <Caption
                             level="1"
                             weight="semibold"
                             caps
                             style={{ marginTop: 10, fontSize: 18 }}
+                            className={styles.caption}
                         >
                             ПД
                         </Caption>
@@ -93,7 +98,7 @@ const Questions = ({ id, updateData }) => {
                 </CardGrid>
             </Group>
             <FixedLayout filled vertical="bottom">
-                <Tabbar className="tabbar-padding">
+                <Tabbar className={styles.tabbarPadding}>
                     <TabbarItem text="Вопросы" selected>
                         <Icon28InfoCircleOutline />
                     </TabbarItem>

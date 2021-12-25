@@ -18,8 +18,11 @@ import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import { Icon20QuestionOutline } from '@vkontakte/icons';
 
-import '../css/Radio.css';
+
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
+import * as styles from '../css/Acquaintance.module.css';
+import * as stylesRadio from '../css/Radio.module.css';
+
 var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
@@ -56,7 +59,7 @@ const Acquaintance = ({
             <PanelHeader>PolyApp</PanelHeader>
             {fetchedUser && (
                 <Group header={<Header mode="primary">Привет!</Header>}>
-                    <Div className="homepage-subhead">
+                    <Div>
                         <Subhead weight="semibold">
                             Это приложение для абитуриентов и студентов
                             факультета информационных технологий Московского
@@ -104,7 +107,7 @@ const Acquaintance = ({
                 {want ? (
                     <Div style={{ marginBlockEnd: 50 }}>
                         <Caption
-                            className="captionCaps"
+                            className={stylesRadio.captionCaps}
                             level="1"
                             weight="semibold"
                             caps

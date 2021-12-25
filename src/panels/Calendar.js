@@ -21,7 +21,7 @@ import DatePicker from '@vkontakte/vkui/dist/components/DatePicker/DatePicker';
 import DatePicker_ from 'react-date-picker';
 import Calendar from 'react-calendar';
 
-import '../css/Calendar.css';
+import * as styles from '../css/Calendar.module.css';
 import { object } from 'prop-types';
 
 import { getRandomInt } from '@vkontakte/vkjs';
@@ -298,7 +298,7 @@ const CalendarPanel = ({ fetchedUser, id }) => {
         if (
             Object.keys(notifies).find((notifyDate) => parsedDate == notifyDate)
         )
-            return 'highlight';
+            return 'styles.highlight';
     }
 
     async function getAllNotifies() {
@@ -382,7 +382,7 @@ const CalendarPanel = ({ fetchedUser, id }) => {
             <Group>
                 <Div>
                     <Calendar
-                        className="calendar"
+                        className={styles.calendar}
                         onClickDay={showNotifies}
                         value={new Date()}
                         tileClassName={({ date }) => highlightDates(date)}

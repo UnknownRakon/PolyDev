@@ -1,0 +1,26 @@
+.instruction__icon {
+    width: 100% !important;
+    height: 30% !important;
+    display: flex;
+    justify-content: center;
+    padding-top: 1%;
+  }
+  .instruction__icon > svg {
+    width: 30% !important;
+    height: 30% !important;
+  }
+  .linkInstruction {
+    line-height: 30px !important;
+  }
+  
+  .heading div div div {
+    font-size: 16px !important;
+  }
+  .groupAbout {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .tabbarPadding {
+    padding: 5px 0;
+  }
+  

@@ -16,7 +16,7 @@ import { Icon28CalendarOutline } from '@vkontakte/icons';
 import { Icon28InfoCircleOutline } from '@vkontakte/icons';
 import { Icon20Write } from '@vkontakte/icons';
 import { Icon16Clear } from '@vkontakte/icons';
-import '../css/Home.css';
+import * as styles from '../css/HomePage.module.css';
 
 import router from '../router';
 
@@ -52,10 +52,10 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
             <PanelHeader>PolyApp</PanelHeader>
             <Div>
                 {fetchedUser && (
-                    <Gradient className="avatar">
+                    <Gradient className={styles.avatar}>
                         <Avatar src={fetchedUser.photo_200} size={96} />
                         <Header
-                            className="delete"
+                            className={styles.delete}
                             mode="primary"
                             aside={<Icon16Clear onClick={clearAll} />}
                         >
@@ -72,7 +72,7 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
                     </Gradient>
                 )}
             </Div>
-            <Group className="group-about" style={{ marginBlockEnd: 70 }}>
+            <Group className={styles.groupAbout} style={{ marginBlockEnd: 70 }}>
                 <Header
                     mode="primary"
                     aside={<Icon20Write onClick={() => router.go('edit')} />}
@@ -105,7 +105,7 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
                 ) : null}
             </Group>
             <FixedLayout filled vertical="bottom">
-                <Tabbar className="tabbar-padding">
+                <Tabbar className={styles.tabbarPadding}>
                     <TabbarItem
                         text="Вопросы"
                         onClick={() => router.go('questions')}

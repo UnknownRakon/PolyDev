@@ -10,7 +10,7 @@ import Card from '@vkontakte/vkui/dist/components/Card/Card';
 import CardGrid from '@vkontakte/vkui/dist/components/CardGrid/CardGrid';
 import { Icon16New } from '@vkontakte/icons';
 
-import '../css/dorms.css';
+import * as styles from '../css/Dorms.module.css';
 
 import router from '../router';
 
@@ -33,17 +33,17 @@ const Dorms = ({ id, setdorm }) => {
                 PolyApp
             </PanelHeader>
             <Group>
-                <Title level="1" weight="regular" className="dorms__title">
+                <Title level="1" weight="regular" className={styles.dorms__title}>
                     Общежития
                 </Title>
-                <Text className="dorms__text">
+                <Text className={styles.dorms__text}>
                     В Московском Политехе студентам предоставляется место в
                     общежитии, если они проживают за пределами трассы А107
                 </Text>
-                <Text className="dorms__text">
+                <Text className={styles.dorms__text}>
                     Выбор общежития предоставляется в приоритетном порядке:
                 </Text>
-                <ul className="dorms__priority">
+                <ul className={styles.dorms__priority}>
                     <li> Студенты со средним баллом 85+ </li>
                     <li> Студенты поступившие на бюджет </li>
                     <li>
@@ -59,31 +59,31 @@ const Dorms = ({ id, setdorm }) => {
                         return (
                             <Card
                                 key={index}
-                                className="dorms__card"
+                                className={styles.dorms__card}
                                 onClick={handeDormClick(index)}
                             >
                                 <div
-                                    className="dorms__card__photo"
+                                    className={styles.dorms__card__photo}
                                     style={{
                                         background:
                                             'url(' + dorm.Фотографии[0] + ')',
                                     }}
                                 ></div>
-                                <div className="dorms__card__content">
-                                    <Text className="dorms__card__content__number">
+                                <div className={styles.dorms__card__content}>
+                                    <Text className={styles.dorms__card__content__number}>
                                         Общежитие {dorm.Номер}
                                     </Text>
-                                    <Text className="dorms__card__content__address">
+                                    <Text className={styles.dorms__card__content__address}>
                                         {' '}
                                         {dorm['Адрес']}{' '}
                                     </Text>
-                                    <div className="dorms__card__content__metro">
+                                    <div className={styles.dorms__card__content__metro}>
                                         <Icon16New
-                                            className="dorms__card__content__metro__color"
+                                            className={styles.dorms__card__content__metro__color}
                                             fill={dorm.Цвет}
                                         />
                                         <Text
-                                            className="dorms__card__content__metro__text"
+                                            className={styles.dorms__card__content__metro__text}
                                             style={{
                                                 textAlign: 'left',
                                                 opacity: 0.5,

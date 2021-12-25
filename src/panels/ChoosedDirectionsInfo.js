@@ -6,11 +6,11 @@ import { PanelHeaderBack } from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import '../css/PickDirections_v2.css';
 import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
-
 import router from '../router';
+
+import * as styles from '../css/ChoosedDirectionsInfo.module.css';
 
 const ChoosedDirectionsInfo = ({ id }) => {
     const [messageDirectionsArray, setArray] = useState([]);
@@ -32,9 +32,9 @@ const ChoosedDirectionsInfo = ({ id }) => {
             >
                 PolyApp
             </PanelHeader>
-            <Title className="choosedDirectionInfo_title">
+            <Title className={styles.choosedDirectionInfo_title}>
                 Отлично! Ты выбрал:
-                <ul>
+                <ul className={styles.directionsList}>
                     {messageDirectionsArray.map((unit, index) => {
                         return (
                             <li style={{ fontSize: '1.2rem' }} key={index}>
@@ -45,10 +45,10 @@ const ChoosedDirectionsInfo = ({ id }) => {
                 </ul>
             </Title>
 
-            <Title className="choosedDirectionInfo_title">
+            <Title className={styles.choosedDirectionInfo_title}>
                 Чтобы участвовать в конкурсе на поступление тебе нужно набрать
                 минимум по профильным предметам и пройти конкурс:
-                <ul>
+                <ul className={styles.directionsList}>
                     {' '}
                     {localStorage.getItem('wantStudyLevel') == 'magistracy' ? (
                         <Text>- Междисциплинарный экзамен — 40</Text>
@@ -64,9 +64,9 @@ const ChoosedDirectionsInfo = ({ id }) => {
                     )}
                 </ul>
             </Title>
-            <Title className="choosedDirectionInfo_title">
+            <Title className={styles.choosedDirectionInfo_title}>
                 Как подать документы?
-                <ul>
+                <ul className={styles.directionsList}>
                     <li>
                         Через{' '}
                         <a
@@ -90,9 +90,9 @@ const ChoosedDirectionsInfo = ({ id }) => {
                     <li>Лично в университете</li>
                 </ul>
             </Title>
-            <Title className="choosedDirectionInfo_title">
+            <Title className={styles.choosedDirectionInfo_title}>
                 Подготовить документы:
-                <ul>
+                <ul className={styles.directionsList}>
                     <li>Копия паспорта</li>
                     <li>Аттестат или диплом СПО</li>
                     <li>Копия СНИЛС</li>
@@ -105,12 +105,12 @@ const ChoosedDirectionsInfo = ({ id }) => {
                     </li>
                 </ul>
             </Title>
-            <Title className="choosedDirectionInfo_title">
+            <Title className={styles.choosedDirectionInfo_title}>
                 Приём документов начинается 20 июня. Ждём тебя!
             </Title>
 
             <FixedLayout
-                className="choosedDirectionInfo__fixed"
+                className={styles.choosedDirectionInfo__fixed}
                 filled
                 vertical="bottom"
             >

@@ -11,7 +11,7 @@ import Title from '@vkontakte/vkui/dist/components/Typography/Title/Title';
 import Text from '@vkontakte/vkui/dist/components/Typography/Text/Text';
 import { PanelHeaderBack } from '@vkontakte/vkui';
 
-import '../css/aboutDirection.css';
+import * as styles from '../css/AboutDirection.module.css';
 
 import router from '../router';
 

@@ -19,7 +19,7 @@ import { Icon56SchoolOutline } from '@vkontakte/icons';
 import { Icon28LightbulbStarOutline } from '@vkontakte/icons';
 import { Link } from '@vkontakte/vkui';
 
-import '../css/question.css';
+import * as styles from '../css/Instruction.module.css';
 import router from '../router';
 const Instruction = ({ id, category, question }) => {
     const createMarkup = (text) => {
@@ -34,16 +34,16 @@ const Instruction = ({ id, category, question }) => {
             </PanelHeader>
             <Div>
                 {category == 'dorms' ? (
-                    <Icon36HomeOutline className="instruction__icon" />
+                    <Icon36HomeOutline className={styles.instruction__icon} />
                 ) : null}
                 {category == 'study' ? (
-                    <Icon28BookOutline className="instruction__icon" />
+                    <Icon28BookOutline className={styles.instruction__icon} />
                 ) : null}
                 {category == 'buildings' ? (
-                    <Icon56SchoolOutline className="instruction__icon" />
+                    <Icon56SchoolOutline className={styles.instruction__icon} />
                 ) : null}
                 {category == 'PD' ? (
-                    <Icon28LightbulbStarOutline className="instruction__icon" />
+                    <Icon28LightbulbStarOutline className={styles.instruction__icon} />
                 ) : null}
                 <Title
                     style={{ marginTop: 10, textAlign: 'center' }}
@@ -53,7 +53,7 @@ const Instruction = ({ id, category, question }) => {
                     {question.question}
                 </Title>
             </Div>
-            <Group className="group-about" style={{ marginBottom: 130 }}>
+            <Group className={styles.groupAbout} style={{ marginBottom: 130 }}>
                 <Div style={{ paddingBlockEnd: 0 }}>
                     <Headline
                         weight="regular"
@@ -64,7 +64,7 @@ const Instruction = ({ id, category, question }) => {
                 </Div>
                 {question.links.length !== 0 ? (
                     <Header
-                        className="heading"
+                        className={styles.heading}
                         style={{ padding: 0 }}
                         mode="secondary"
                     >
@@ -82,7 +82,7 @@ const Instruction = ({ id, category, question }) => {
                             >
                                 <Link
                                     key={index}
-                                    className="link-instruction"
+                                    className={styles.linkInstruction}
                                     href={link.href}
                                     target="_blank"
                                 >
@@ -93,7 +93,7 @@ const Instruction = ({ id, category, question }) => {
                     })}
             </Group>
             <FixedLayout filled vertical="bottom">
-                <Tabbar className="tabbar-padding">
+                <Tabbar className={styles.tabbarPadding}>
                     <TabbarItem
                         selected
                         text="Вопросы"
