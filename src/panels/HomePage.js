@@ -19,32 +19,36 @@ import { Icon16Clear } from '@vkontakte/icons';
 import * as styles from '../css/HomePage.module.css';
 
 import router from '../router';
+import { useStore } from 'effector-react';
+import {
+    $user,
+    setDorm,
+    setDormnum,
+    setGroup,
+    setLevel,
+    setProf,
+    setSpecialty,
+    setStud,
+    setYear,
+} from '../store';
 
-const HomePage = ({ id, setActivePanel, fetchedUser }) => {
-    const [group, setGroup] = useState('');
-    const [level, setLevel] = useState('');
-    const [stud, setStud] = useState('');
-    const [prof, setProf] = useState('');
-    const [dorm, setDorm] = useState('');
-    const [year, setYear] = useState('');
-    const [specialty, setSpecialty] = useState('');
-    const [dormnum, setDormnum] = useState('');
+const HomePage = ({ id, fetchedUser }) => {
+    const user = useStore($user);
     useEffect(() => {
         localStorage.setItem('validation', 'set');
         localStorage.removeItem('category');
-        setGroup(localStorage.getItem('group'));
-        setLevel(localStorage.getItem('level'));
-        setStud(localStorage.getItem('stud'));
-        setProf(localStorage.getItem('prof'));
-        setDorm(localStorage.getItem('dorm'));
-        setYear(localStorage.getItem('year'));
-        setSpecialty(localStorage.getItem('specialty'));
-        setDormnum(localStorage.getItem('dormnum'));
         router.stop();
         router.start();
     }, []);
     const clearAll = () => {
-        window.localStorage.clear();
+        setGroup('');
+        setLevel('');
+        setYear('');
+        setSpecialty('');
+        setDorm('');
+        setStud('');
+        setProf('');
+        setDormnum('');
         router.go('acquaintance');
     };
     return (
@@ -67,7 +71,7 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
                                 : ''}
                         </Text>
                         <Text style={{ textAlign: 'center', marginTop: 10 }}>
-                            {specialty}
+                            {user.$speciality}
                         </Text>
                     </Gradient>
                 )}
@@ -79,27 +83,30 @@ const HomePage = ({ id, setActivePanel, fetchedUser }) => {
                 >
                     Обо мне
                 </Header>
-                <Header mode="secondary" aside={<Text>{level}</Text>}>
+                <Header mode="secondary" aside={<Text>{user.$level}</Text>}>
                     Ступень:
                 </Header>
-                <Header mode="secondary" aside={<Text>{group}</Text>}>
+                <Header mode="secondary" aside={<Text>{user.$group}</Text>}>
                     Группа:
                 </Header>
-                <Header mode="secondary" aside={<Text>{year}</Text>}>
+                <Header mode="secondary" aside={<Text>{user.$year}</Text>}>
                     Курс:
                 </Header>
-                {dorm == 'Yes' ? (
-                    <Header mode="secondary" aside={<Text>{dormnum}</Text>}>
+                {user.$dorm == 'Yes' ? (
+                    <Header
+                        mode="secondary"
+                        aside={<Text>{user.$dormnum}</Text>}
+                    >
                         Общежитие №:
                     </Header>
                 ) : null}
-                {stud != '' ? (
-                    <Header mode="secondary" aside={<Text>{stud}</Text>}>
+                {user.$stud != '' ? (
+                    <Header mode="secondary" aside={<Text>{user.$stud}</Text>}>
                         Студенческий:
                     </Header>
                 ) : null}
-                {prof != '' ? (
-                    <Header mode="secondary" aside={<Text>{prof}</Text>}>
+                {user.$prof != '' ? (
+                    <Header mode="secondary" aside={<Text>{user.$prof}</Text>}>
                         Профбилет:
                     </Header>
                 ) : null}

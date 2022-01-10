@@ -18,26 +18,41 @@ import * as styles from '../css/AboutStudent.module.css';
 const newDirections = require('../json/new_directions.json');
 
 import router from '../router';
+import { useStore } from 'effector-react';
+import {
+    $dorm,
+    $dormnum,
+    $group,
+    $level,
+    $prof,
+    $speciality,
+    $stud,
+    $user_id,
+    $year,
+    getUser,
+    setDorm,
+    setDormnum,
+    setGroup,
+    setLevel,
+    setProf,
+    setSpecialty,
+    setStud,
+    setYear,
+} from '../store';
 
 const AboutStudent = ({ id }) => {
-    const [level, setLevel] = useState('');
-    const [year, setYear] = useState('');
-    const [specialty, setSpecialty] = useState('');
-    const [group, setGroup] = useState('');
-    const [dorm, setDorm] = useState('');
-    const [stud, setStud] = useState('');
-    const [prof, setProf] = useState('');
-    const [dormnum, setDormnum] = useState('');
+    const level = useStore($level);
+    const year = useStore($year);
+    const specialty = useStore($speciality);
+    const group = useStore($group);
+    const dorm = useStore($dorm);
+    const stud = useStore($stud);
+    const prof = useStore($prof);
+    const dormnum = useStore($dormnum);
+    const vk_id = useStore($user_id);
 
-    const toStorage = () => {
-        localStorage.setItem('level', level);
-        localStorage.setItem('year', year);
-        localStorage.setItem('specialty', specialty);
-        localStorage.setItem('group', group);
-        localStorage.setItem('dorm', dorm);
-        localStorage.setItem('stud', stud);
-        localStorage.setItem('prof', prof);
-        localStorage.setItem('dormnum', dormnum);
+    const register = () => {
+        getUser(vk_id);
         router.go('home');
     };
 
@@ -237,7 +252,7 @@ const AboutStudent = ({ id }) => {
                                 ? true
                                 : false
                         }
-                        onClick={() => toStorage()}
+                        onClick={() => register()}
                     >
                         Продолжить
                     </Button>

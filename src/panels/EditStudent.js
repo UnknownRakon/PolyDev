@@ -18,39 +18,35 @@ import * as styles from '../css/EditStudent.module.css';
 const newDirections = require('../json/new_directions.json');
 
 import router from '../router';
+import { useStore } from 'effector-react';
+import {
+    $dorm,
+    $dormnum,
+    $group,
+    $level,
+    $prof,
+    $speciality,
+    $stud,
+    $year,
+    setDorm,
+    setDormnum,
+    setGroup,
+    setLevel,
+    setProf,
+    setSpecialty,
+    setStud,
+    setYear,
+} from '../store';
 
 const AboutStudent = ({ id }) => {
-    const [level, setLevel] = useState('');
-    const [year, setYear] = useState('');
-    const [specialty, setSpecialty] = useState('');
-    const [group, setGroup] = useState('');
-    const [dorm, setDorm] = useState('');
-    const [stud, setStud] = useState('');
-    const [prof, setProf] = useState('');
-    const [dormnum, setDormnum] = useState('');
-
-    useEffect(() => {
-        setGroup(localStorage.getItem('group'));
-        setLevel(localStorage.getItem('level'));
-        setStud(localStorage.getItem('stud'));
-        setProf(localStorage.getItem('prof'));
-        setDorm(localStorage.getItem('dorm'));
-        setYear(localStorage.getItem('year'));
-        setSpecialty(localStorage.getItem('specialty'));
-        setDormnum(localStorage.getItem('dormnum'));
-    }, [id]);
-
-    const toStorage = () => {
-        localStorage.setItem('level', level);
-        localStorage.setItem('year', year);
-        localStorage.setItem('specialty', specialty);
-        localStorage.setItem('group', group);
-        localStorage.setItem('dorm', dorm);
-        localStorage.setItem('stud', stud);
-        localStorage.setItem('prof', prof);
-        localStorage.setItem('dormnum', dormnum);
-        router.go('home');
-    };
+    const level = useStore($level);
+    const year = useStore($year);
+    const specialty = useStore($speciality);
+    const group = useStore($group);
+    const dorm = useStore($dorm);
+    const stud = useStore($stud);
+    const prof = useStore($prof);
+    const dormnum = useStore($dormnum);
 
     return (
         <Panel id={id}>
@@ -253,7 +249,7 @@ const AboutStudent = ({ id }) => {
                                 ? true
                                 : false
                         }
-                        onClick={() => toStorage()}
+                        onClick={() => router.go('home')}
                     >
                         Продолжить
                     </Button>
