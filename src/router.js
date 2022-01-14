@@ -23,9 +23,8 @@ const routes = [
         ],
     },
 ];
-
 const config = {
-    defaultRoute: localStorage.getItem('group') ? 'home' : 'acquaintance',
+    defaultRoute: 'acquaintance',
 };
 
 const router = createNavigator(routes, config);

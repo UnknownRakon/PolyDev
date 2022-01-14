@@ -36,9 +36,10 @@ import {
     setSpecialty,
     setStud,
     setYear,
+    updateUser,
 } from '../store';
 
-const AboutStudent = ({ id }) => {
+const AboutStudent = ({ id, fetchedUser }) => {
     const level = useStore($level);
     const year = useStore($year);
     const specialty = useStore($speciality);
@@ -47,6 +48,26 @@ const AboutStudent = ({ id }) => {
     const stud = useStore($stud);
     const prof = useStore($prof);
     const dormnum = useStore($dormnum);
+    const [user, setUser] = useState('');
+
+    useEffect(() => {
+        fetchedUser != null ? setUser(String(fetchedUser.id)) : null;
+    }, [fetchedUser]);
+
+    const edit = () => {
+        updateUser({
+            user,
+            level,
+            year,
+            specialty,
+            group,
+            dorm,
+            stud,
+            prof,
+            dormnum,
+        });
+        router.go('home');
+    };
 
     return (
         <Panel id={id}>
@@ -249,7 +270,7 @@ const AboutStudent = ({ id }) => {
                                 ? true
                                 : false
                         }
-                        onClick={() => router.go('home')}
+                        onClick={() => edit()}
                     >
                         Продолжить
                     </Button>

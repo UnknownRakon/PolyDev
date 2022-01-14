@@ -20,17 +20,7 @@ import * as styles from '../css/HomePage.module.css';
 
 import router from '../router';
 import { useStore } from 'effector-react';
-import {
-    $user,
-    setDorm,
-    setDormnum,
-    setGroup,
-    setLevel,
-    setProf,
-    setSpecialty,
-    setStud,
-    setYear,
-} from '../store';
+import { $user, deleteUser } from '../store';
 
 const HomePage = ({ id, fetchedUser }) => {
     const user = useStore($user);
@@ -40,15 +30,8 @@ const HomePage = ({ id, fetchedUser }) => {
         router.stop();
         router.start();
     }, []);
-    const clearAll = () => {
-        setGroup('');
-        setLevel('');
-        setYear('');
-        setSpecialty('');
-        setDorm('');
-        setStud('');
-        setProf('');
-        setDormnum('');
+    const deleteAccount = () => {
+        deleteUser(fetchedUser.id);
         router.go('acquaintance');
     };
     return (
@@ -61,7 +44,9 @@ const HomePage = ({ id, fetchedUser }) => {
                         <Header
                             className={styles.delete}
                             mode="primary"
-                            aside={<Icon16Clear onClick={clearAll} />}
+                            aside={
+                                <Icon16Clear onClick={() => deleteAccount()} />
+                            }
                         >
                             {`${fetchedUser.first_name} ${fetchedUser.last_name}`}
                         </Header>

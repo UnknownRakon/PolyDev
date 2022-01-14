@@ -31,7 +31,7 @@ import './css/gilroy.css';
 import * as styles from './css/App.module.css';
 import { Icon56QuestionOutline } from '@vkontakte/icons';
 import { Icon56GhostOutline } from '@vkontakte/icons';
-import { setID } from './store';
+import { getUser } from './store';
 
 const MODAL_CARD_ONE = 'modal-one';
 const MODAL_CARD_TWO = 'modal-two';
@@ -60,7 +60,6 @@ const App = () => {
             const user = await bridge.send('VKWebAppGetUserInfo');
             setUser(user);
             setPopout(null);
-            setID(user.id);
         }
         fetchData();
 
@@ -79,6 +78,9 @@ const App = () => {
             routerUnsubscribe();
         };
     }, []);
+    useEffect(() => {
+        fetchedUser != null ? getUser(String(fetchedUser.id)) : null;
+    }, [fetchedUser]);
 
     const updateData = (value) => {
         setCategory(value);
@@ -169,16 +171,11 @@ const App = () => {
                         id="student-form-filling"
                         fetchedUser={fetchedUser}
                     />
-                    <EditStudent
-                        id="edit"
-                        setActivePanel={setActivePanel}
-                        fetchedUser={fetchedUser}
-                    />
+                    <EditStudent id="edit" fetchedUser={fetchedUser} />
                     <HomePage
                         MODAL_CARD_THREE={MODAL_CARD_THREE}
                         setActiveModal={setActiveModal}
                         id="home"
-                        setActivePanel={setActivePanel}
                         fetchedUser={fetchedUser}
                     />
                     <Questions

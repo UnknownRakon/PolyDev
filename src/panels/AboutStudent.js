@@ -27,9 +27,8 @@ import {
     $prof,
     $speciality,
     $stud,
-    $user_id,
     $year,
-    getUser,
+    createUser,
     setDorm,
     setDormnum,
     setGroup,
@@ -40,7 +39,7 @@ import {
     setYear,
 } from '../store';
 
-const AboutStudent = ({ id }) => {
+const AboutStudent = ({ id, fetchedUser }) => {
     const level = useStore($level);
     const year = useStore($year);
     const specialty = useStore($speciality);
@@ -49,10 +48,24 @@ const AboutStudent = ({ id }) => {
     const stud = useStore($stud);
     const prof = useStore($prof);
     const dormnum = useStore($dormnum);
-    const vk_id = useStore($user_id);
+    const [user, setUser] = useState('');
+
+    useEffect(() => {
+        fetchedUser != null ? setUser(String(fetchedUser.id)) : null;
+    }, [fetchedUser]);
 
     const register = () => {
-        getUser(vk_id);
+        createUser({
+            user,
+            level,
+            year,
+            specialty,
+            group,
+            dorm,
+            stud,
+            prof,
+            dormnum,
+        });
         router.go('home');
     };
 

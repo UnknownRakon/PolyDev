@@ -18,7 +18,6 @@ import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import { Icon20QuestionOutline } from '@vkontakte/icons';
 
-
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
 import * as styles from '../css/Acquaintance.module.css';
 import * as stylesRadio from '../css/Radio.module.css';
@@ -27,6 +26,8 @@ var Scroll = require('react-scroll');
 var scroll = Scroll.animateScroll;
 
 import router from '../router';
+import { useStore } from 'effector-react';
+import { $group } from '../store';
 
 const Acquaintance = ({
     id,
@@ -38,12 +39,15 @@ const Acquaintance = ({
     const [want, setWant] = useState(false);
     const [wantStudyForm, setForm] = useState('Очная');
     const [wantStudyLevel, setLevel] = useState('Бакалавриат');
-    const [allow, setAllow] = useState(true);
-    const [result, setResult] = useState();
+    const group = useStore($group);
 
     useEffect(() => {
         localStorage.setItem('selectedGroups', []);
-    });
+    }, []);
+
+    useEffect(() => {
+        if (group != '') router.go('home');
+    }, [group]);
 
     const handleNextClick = () => {
         localStorage.setItem('wantStudyForm', wantStudyForm);
